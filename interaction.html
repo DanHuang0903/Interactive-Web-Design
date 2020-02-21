@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Interactive DEMO -- Dan Huang</title>
+
+ <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <link href="jquery-ui.css" rel="stylesheet">
+
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="script.js"></script>
+     <script src="script_demo1.js"></script>
+
+     
+</head>
+
+
+<body>
+
+    <div class="wrapper">
+
+         <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="animated bounceInLeft">Interactive</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Interactive Web Design</p>
+                 <li>
+                    <a href="index.html">CV</a>
+                </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">DEMO</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Interactive Webpage</a>
+                            </li>
+                        <li>
+                            <a href="#">Data Visualization</a>
+                        </li>
+                    </ul>
+                </li>
+    
+                
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="download">Download source</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg bg-light navbar-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn bg-light hoverable">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                         
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <h2>Interactive Webpage</h2>
+            <p>An interactive web design is a design for websites which uses different framework or library to have the user interface more functional. Users can gain more sophisticatd experience with 
+            interactive web design. In this page, I illustrated some interactive web designs through different frameworks.</p>
+            <p>Hover main images over the DEMO titles to see instructions.</p><br/>
+
+            
+
+                <ul class="nav nav-tabs  ml-auto" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="demo1-tab" data-toggle="tab" href="#demo1" role="tab" aria-controls="demo1"
+                      aria-selected="true">DEMO 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="demo2-tab" data-toggle="tab" href="#demo2" role="tab" aria-controls="demo2"
+                      aria-selected="false">DEMO2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="demo3-tab" data-toggle="tab" href="#demo3" role="tab" aria-controls="demo3"
+                      aria-selected="false">DEMO3</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+
+                    <!-- DEMO1 Random Numbers -->
+
+                  <div class="tab-pane fade show active container-fluid" id="demo1" role="tabpanel" aria-labelledby="demo1-tab">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <!-- Card -->
+                            <div class="card">
+
+                              <!-- Card image -->
+                              <div class="view overlay">
+                                <img class="card-img-top" src="img/randomnumber.jpg" alt="Card image cap">
+                                <div class="mask flex-center rgba-blue-strong">
+                                    <div class="intro">
+                                        <p class="white-text">Two players take turns getting random numbers.<br/>Whoever got the larger number in total win the game.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                               
+
+                              <!-- Card content -->
+                              <div class="card-body">
+
+                                <!-- Title -->
+                                <h4 class="card-title">Random Numbers</h4>
+                                <!-- Text -->
+                                <p class="card-text">
+                                    
+                                </p>
+                                <!-- Button -->
+                                <button class="btn purple-gradient" id="start1">START</button>
+                                <!-- dropright button -->
+                                    <div class="btn-group dropright">
+                                      <button type="button" class="btn blue-gradient dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        About
+                                      </button>
+                                      <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Framework used in this DEMO</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">jQuery</a>
+                                        <a class="dropdown-item" href="#">Bootstrap</a>
+                                      </div>
+                                    </div>
+                              </div>
+
+                            </div>
+
+                            <!-- End of Card -->
+                        </div>
+
+                        <!--- Game ---->
+                        <div class="col-md-9">
+                           
+                        <div class="jumbotron playground view">
+                            <div class="container-fluid" id="dashboard">
+                               <div class="row justify-content-md-center" >
+                                    <div class="col-md-3" style="height: 1.2em;"><p id="count_label"><span id="count">5</span> rounds left.</p></div>
+                                    <div class="col-md-9" style="height: 1.2em;">
+                                             <p class="result"><span id="winner"></span><span id="round"></span></p>
+                                    </div>
+                                </div>
+                                <hr/>
+                              <div class="container">
+                                <div class="row justify-content-md-center" >
+                                    <div class="col-lg-6">
+                                        <div class="row justify-content-md-center">
+                                            <h3>Player 1</h3>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <p>Total Points: <span class="total_num animated" id="total1">0</span></p>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <p class="points_num" id="point1">Round 0:</p>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <button class="btn btn-light-green" id="btn1" onclick="clicked(this)">Get Number!</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="row justify-content-md-center">
+                                            <h3>Player 2</h3>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <p>Total Points: <span class="total_num animated" id="total2">0</span></p>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <p class="points_num" id="point2">Round 0:</p>
+                                        </div>
+                                        <div class="row justify-content-md-center">
+                                            <button class="btn btn-light-green" id="btn2" onclick="clicked(this)">Get Number!</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                             
+                            </div>
+
+                            <!------Game Over Mask------>
+                            <div id="game_over">
+                             
+                            </div>
+                        </div>
+
+
+   
+
+
+
+                    </div>
+                    </div>
+                    
+                  </div>
+                   <!-- DEMO2 Drag and Drop -->
+
+                  <div class="tab-pane fade container-fluid" id="demo2" role="tabpanel" aria-labelledby="demo2-tab">
+                      <div class="row">
+                        <div class="col-md-3">
+                            <!-- Card -->
+                            <div class="card">
+
+                              <!-- Card image -->
+                              <div class="view overlay">
+                                <img class="card-img-top" src="img/drag_drop.png" alt="Card image cap">
+                                <div class="mask flex-center rgba-blue-strong">
+                                    <div class="intro">
+                                        <p class="white-text">Click on icons to see what would happen.<br/>Then drag images to trash bin to see what would happen.</p>
+                                    </div>
+                                 </div>
+                              </div>
+                               
+
+                              <!-- Card content -->
+                              <div class="card-body">
+
+                                <!-- Title -->
+                                <h4 class="card-title">Drag and Drop</h4>
+                                <!-- Text -->
+                                <p class="card-text">
+                                    
+                                </p>
+
+                           <!-- dropright button -->
+                            <div class="btn-group dropright">
+                              <button type="button" class="btn blue-gradient dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                About
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Framework used in this DEMO</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">jQuery</a>
+                                <a class="dropdown-item" href="#">jQuery UI</a>
+                                <a class="dropdown-item" href="#">Bootstrap</a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                            <!-- End of Card -->
+                        </div>
+                        <div class="col-md-9">
+                            <div class="jumbotron playground">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                    <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul id="gallery"  class="gallery ui-helper-reset ui-helper-clearfix">
+                                              <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Family</h5>
+                                                <img src="img/image1.jpg" alt="image1" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash">delete</a>
+                                              </li>
+                                              <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Puppy</h5>
+                                                <img src="img/image2.jpg" alt="image2" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                              <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Party</h5>
+                                                <img src="img/image3.png" alt="image3" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                              <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Beach</h5>
+                                                <img src="img/image4.jpg" alt="image4" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                              <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Birthday</h5>
+                                                <img src="img/image5.jpg" alt="image5" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                               <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">School</h5>
+                                                <img src="img/image6.jpg" alt="image6" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                               <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Wedding</h5>
+                                                <img src="img/image7.jpg" alt="image7" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                              <li class="ui-widget-content ui-corner-tr">
+                                                <h5 class="ui-widget-header">Zoo</h5>
+                                                <img src="img/image8.jpg" alt="image8" class="rounded img-fluid zoom">
+                                                <a href="link/to/trash/script/when/we/have/js/off" title="delete" class="ui-icon ui-icon-trash"></a>
+                                              </li>
+                                            </ul>
+                                            </div>
+                                     </div>
+                                     <div class="row">
+                                         
+                                     </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <div id="trash"  class="ui-widget-content">
+                                      <h4><i class="fas fa-trash-alt"></i> TRASH</h4>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                     
+                            </div>
+                            </div>
+                  </div>
+                </div>
+
+                  <div class="tab-pane fade" id="demo3" role="tabpanel" aria-labelledby="demo3-tab">demo3</div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
