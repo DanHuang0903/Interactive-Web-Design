@@ -47,18 +47,20 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Interactive Web Design</p>
+                <li>
+                    <a href="index.html">Application for<br/> Interactive Web Design</a>
+                </li>
                  <li>
                     <a href="index.html">CV</a>
                 </li>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">DEMO</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
+                        <li class="active">
                             <a href="#">Interactive Webpage</a>
                             </li>
                         <li>
-                            <a href="#">Data Visualization</a>
+                            <a href="dataVisual.html">Data Visualization</a>
                         </li>
                     </ul>
                 </li>
@@ -151,7 +153,7 @@
                                     
                                 </p>
                                 <!-- Button -->
-                                <button class="btn purple-gradient" id="start1">START</button>
+                                <button class="btn purple-gradient animated bounce" id="start1">START</button>
                                 <!-- dropright button -->
                                     <div class="btn-group dropright">
                                       <button type="button" class="btn blue-gradient dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -174,7 +176,7 @@
                         <!--- Game ---->
                         <div class="col-md-9">
                            
-                        <div class="jumbotron playground view">
+                        <div class="jumbotron playground view" style="overflow: auto;">
                             <div class="container-fluid" id="dashboard">
                                <div class="row justify-content-md-center" >
                                     <div class="col-md-3" style="height: 1.2em;"><p id="count_label"><span id="count">5</span> rounds left.</p></div>
@@ -226,13 +228,7 @@
                              
                             </div>
                         </div>
-
-
-   
-
-
-
-                    </div>
+                     </div>
                     </div>
                     
                   </div>
@@ -350,12 +346,19 @@
                   </div>
                 </div>
 
-                  <div class="tab-pane fade" id="demo3" role="tabpanel" aria-labelledby="demo3-tab">demo3</div>
+                    <!-- DEMO3 Bubbles -->
+
+                  <div class="tab-pane fade container-fluid" id="demo3" role="tabpanel" aria-labelledby="demo3-tab">
+                
+                    </div>
+
+                  <!-----End of DEMO3----->
                 </div>
+              </div>
             </div>
-        </div>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
@@ -368,10 +371,10 @@
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
+
         });
 
-
-    </script>
+</script>
 
 </body>
 

@@ -227,6 +227,10 @@ a.article, a.article:hover {
     height: 22em;
 }
 
+#dashboard{
+    overflow: auto;
+}
+
 .playground{
     height: 22em;
     padding-top: 2em;
