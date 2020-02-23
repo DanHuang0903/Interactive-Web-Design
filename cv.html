@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Dan Huang</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="jquery-ui.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+    <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="animated bounceInLeft">Dan Huang</h3>
+                <img src="img/dan.jpg" class="rounded-circle zoom">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="index.html">Application for<br/> Interactive Web Design</a>
+                </li>
+                 <li>
+                    <a href="#">CV</a>
+                </li>
+                <li >
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">DEMO</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="interaction.html">Interactive Webpage</a>
+                            </li>
+                        <li>
+                            <a href="dataVisual.html">Data Visualization</a>
+                        </li>
+                    </ul>
+                </li>
+    
+                
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="download">Download source</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn bg-light hoverable">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                           
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <h2>Education</h2>
+            <table style="width:100%">
+                  <tr>
+                    <td>University of Missouri-Columbia </td>
+                    <td>Master of Science, Computer Engineering</td>
+                    <td>GPA 3.9</td>
+                  </tr>
+                  <tr>
+                    <td>Florida State University</td>
+                    <td>Master of Science, Computer Science </td>
+                    <td>GPA 3.8</td>
+                  </tr>
+                  <tr>
+                    <td>University of Electronic Science and Technology of China</td>
+                    <td>Master of Engineering, Software Engineering</td>
+                    <td>GPA 3.9</td>
+                  </tr>
+                </table>
+
+            <div class="line"></div>
+
+            <h2>Professional Experiences</h2>
+            <ul>
+                <li>Web development: MyMoreNET connections (Work Project)
+                    <ul>
+                        <li>Full-stack project, based on Ruby on Rails back-end, network framework. Use both local and cloud server.</li>
+                        <li>Used JavaScript to do front-end development.</li>
+                        <li>Used jQuery.js and D3.js to do interactive development and live data visualization.</li>
+                        <li>Used HTML5, Bootstrap CSS framework.</li>
+                        <li>Used Docker as web container and used Kubenetes to deploy on the local sever.</li>
+                    </ul>
+                </li>
+                <li>Web development: Course Review Website (Individual Project)
+                    <ul>
+                        <li>Full-stack project, based on Ruby on Rails back-end, network framework. Use both local and cloud server.</li>
+                        <li>Used JavaScript to do front-end development.</li>
+                        <li>Used jQuery.js to do interactive development.</li>
+                        <li>Used HTML5, Bootstrap CSS framework and fusionCharts framework.</li>
+                        <li>Used git to deploy on cloud server (heroku)</li>
+                        <li>Used Postgres - SQL Database</li>
+                        <li>https://morning-savannah-34101.herokuapp.com/</li>
+
+                    </ul>
+                </li>
+                <li>Web development: Photograph Website (Individual Project, Ongoing Project)
+                    <ul>
+                        <li>Full-stack project, based on Ruby on Rails back-end, network framework. Use both local and cloud server.</li>
+                        <li>Used JavaScript to do front-end development.</li>
+                        <li>Used jQuery.js to do interactive development.</li>
+                        <li>Used HTML5, Bootstrap CSS framework framework.</li>
+                        <li>Used git to deploy on cloud server (heroku)</li>
+                        <li>Used Postgres - SQL Database</li>
+                        <li>https://weihua.herokuapp.com/</li>
+                    </ul>
+                </li>
+
+                <li>Unsupervised Learning: RNN-based Name generator (Course Project)
+                    <ul>
+                        <li>Used a RNN to learn the name features, then nested a sampling step in the learning loop to generate names</li>
+                    </ul>
+                </li>
+                <li>Computer Vision: Image Captioning (Course Project)
+                    <ul>
+                        <li>Applied a neural network of which architecture consists a vision ConvNet followed by a recurrent neural network to a large image dataset to implement the image captioning and transplanted it onto iPhone by making a user interface</li>
+                    </ul>
+                </li>
+                <li>Data Visualization: Yelp Data Visualization (Course Project) 
+                    <ul>
+                        <li>Used D3.js to visualize a large number of data provided by Yelp.</li>
+                        <li>Designed interactive and animated webpages with HTML/JavaScript/Tableau</li>
+                    </ul>
+                </li>
+                <li>A Personal Website for an Amateur Photography (Individual Project)
+                    <ul>
+                        <li>A web UI  developed using HTML5, CSS3, and JavaScript</li>
+                    </ul>
+                </li>
+                <li>Online Course Overview Application (Individual Project)
+                    <ul>
+                        <li>A online application to review and overview the courses of engineering school which can show the updated database momentarily.
+                        </li>
+                        <li>Used HTML5, CSS3, JavaScript, jQuery and D3.js to build the UI and the vivid interactive data visualization
+                        </li>
+                        <li>Used MySQL as a database, and PHP for interactive communication with the database. Deployed to LAN to collect data.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="line"></div>
+             <h2>Other Experiences</h2>
+             <ul>
+                 <li>Game Designer
+                 <ul>
+                     <li>3D interactive educational game for computational thinking (Chief game architecture and scenario designer; Unity3D-based)
+                     </li>
+                 </ul>
+             </li>
+             <li>Publications and Presentations 
+                <ul>
+                    <li>Xu, X., Huang, D., & Li, J. (presented 2018, October). Preparing K-12 Students Concepts of Computational Thinking through a Role-playing Game. The International Convention of AECT, Association for Educational Communications and Technology, Kansas City, MO.
+                    </li>
+                    <li>Xu, X., Ke, F., & Huang, D. (2016). Exploring the embodied interactive learning effects – designing an instructional scenario with Unity3D and Kinect V2 sensor. In Proceedings of EdMedia: World Conference on Educational Media and Technology 2016 (pp. 1625-1630). Association for the Advancement of Computing in Education (AACE).
+                    </li>
+                </ul>
+             </li>
+             <li>Certificates
+                <ul>
+                    <li>Front-end Development: https://www.coursera.org/account/accomplishments/verify/6DYVJ32HB7GU</li>
+                    <li>Convolutional Neural Networks: https://www.coursera.org/account/accomplishments/verify/YR8JDQ5WFVEF</li>
+                    <li>Structuring Machine Learning: https://www.coursera.org/account/accomplishments/verify/XY6W9DRK6WBL</li>
+                    <li>Improving Deep Neural Networks: https://www.coursera.org/account/accomplishments/verify/4N6WU4MXT9TF</li>
+                    <li>Deep Learning: https://www.coursera.org/account/accomplishments/verify/DXAZPLMWK3BD</li>
+                </ul>
+             </li>
+             </ul>
+
+            <div class="line"></div>
+             <h2>Skills</h2>
+             <ul>
+                 <li>Languages: Java, MATLAB, JavaScript, PHP, SQL, jQuery.js, Vue.js, jQuery UI, D3.js, Ruby, HTML5, CSS3, Python, C#</li>
+                 <li>Frameworks: Bootstrap, Rails, TensorFlow, Keras, MDB</li>
+                 <li>Others: Git, Docker, MySQL, Unity3D, PhotoShop, heroku</li>
+                 <li>Familiar with Windows, Mac OS and Linux operating systems</li>
+             </ul>
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
