@@ -1,240 +1,356 @@
-//The buttons of controlling the bubble amount.
-//Click different buttons to pass the corresponding number to the chart function
-    $("#btn20").click(function(){
-      $("#number").text("20 Bubbles");
-      chart(20);
-    });
-    $("#btn50").click(function(){
-      $("#number").text("50 Bubbles");
-      chart(50);
-    });
-    $("#btn80").click(function(){
-      $("#number").text("80 Bubbles");
-      chart(80);
-    });
 
 
-//The main function of build the entire bubble chart
-    function chart(num){
-
-    //Disable the dismiss button when call function chart
-    $("#btn_dismiss").attr("disabled",true);
-    $("#btn_line").attr("disabled",false);
-  $("#btn_center").attr("disabled",false);
+function chart(reports_full){
+  d3.selectAll('svg').remove();
 
 
-    var width = 700, height = 400
-    //the center potion of grouping bubbles.
-    var center = {x:width/1.8, y:height/2 }
-    //x potions of each team.
-    var teamTitleX = {'Orange':50, 'Yellow':250, 'Green':450};
-    
-
-    
-  var colorScale = ['#F8971D','#FFD24F', '#6CB33F']
-  var xCenter = [50,250,450]
-  var numNodes = num;
-
-  //Form the nodes data.
-  var nodes = d3.range(numNodes).map(function(d,i) {
-        return {radius: Math.random() * 25,
-              category: i%3}
-      });
-
-  var tooltip = d3.select("#content2")
-          .append("div")
-          .style("z-index","10")
-          .attr("id","tooltip")
-          .attr("class",'tooltips')
-          .style("width","8em")
-          .style("height","4em")
-          .style("pointer-events","none")
-          .style("position","absolute")
-          .style("text-align","center")
-          .style("padding-top","0.5em")
-          .style("padding-bottom","0.5em")
-          .style("font","1em sans-serif")
-                .style("background","lightsteelblue")
-          .style("border-radius","0.4em");
-  tooltip.style("opacity",0);
-
-  
-  //Show the team labels when call this function
-  function showTitle(){
-    var teamData = d3.keys(teamTitleX);
-    var teams = d3.select('svg').selectAll('.team')
-            .data(teamData);
-      teams.enter()
-         .append('text')
-         .attr('class','team')
-         .attr('x', function(d){return teamTitleX[d];})
-         .attr('y',50)
-         .attr('text-anchor', 'start')
-         .text(function(d){return d;});
-          }
-
-  //Hide the team labels when call this function
-  function hideTitle(){
-    d3.select('svg').selectAll(".team").remove();
-  }
+  var reports_total = [80,499,322,221,142];
+  var width = 600;
+  var height = 300;
+  var rectPadding = 5;
 
 
-  //Group the bubbles in teams when call this function      
-    function split(){
-      showTitle(); //show the team labels
-      var simulation = d3.forceSimulation(nodes);
-       simulation.force("charge", d3.forceManyBody().strength(13))
-        .force("x", d3.forceX().x(function(d){
-          return d.x + (xCenter[d.category] - d.x);
-        }))
-        .force("y", d3.forceY().y(function(d){
-          return d.y + (height/2-200 - d.y);
-        }))
-        .force("collision", d3.forceCollide().radius(function(d) {
-          return d.radius;
-        }))
-        .on("tick", ticked);
-    
+  var svg = d3.select("#bar")
+              .append("svg")
+              .attr("id","chartSvg")
+              .attr("width",660)
+              .attr("height",300);
+
+ var defs = svg.append("defs");
+  var filter = defs.append("filter")
+    .attr("id", "drop-shadow")
+    .attr("height", "105%");
+    filter.append("feGaussianBlur")
+    .attr("in", "SourceAlpha")
+    .attr("stdDeviation", 5)
+    .attr("result", "blur");
+
+    filter.append("feOffset")
+    .attr("in", "blur")
+    .attr("dx", 5)
+    .attr("dy", 5)
+    .attr("result", "offsetBlur");
+
+  var feMerge = filter.append("feMerge");
+
+  feMerge.append("feMergeNode")
+    .attr("in", "offsetBlur")
+  feMerge.append("feMergeNode")
+    .attr("in", "SourceGraphic");
+
+  var padding = {left:80, right: 30, top:20, bottom:20};
+
+
+
+   var xScale = d3.scaleBand()
+        .domain(d3.range(reports_total.length))
+        .range([0, width - padding.left - padding.right-20]);
+
+  var yScale = d3.scaleLinear()
+        .domain([0,d3.max(reports_total)])
+        .range([height- padding.top - padding.bottom,0]);
+
+  svg.append("rect")
+      .attr("class","legend_in")
+      .attr("width",20)
+      .attr("height",16)
+      .attr("fill","#00728F")
+      .attr("transform", "translate(0,0)")
+      .on("mouseover",mouseoverLabelIn)
+      .on("mouseout",mouseoutLableIn);
+
+  svg.append("text")
+      .text("Graduate Students")
+      .attr("class","legend_in")
+      .style("fill","#5C6F7C")
+      .style("font-size","1.1rem")
+      .attr("transform", "translate(28,15)")
+      .on("mouseover",mouseoverLabelIn)
+      .on("mouseout",mouseoutLableIn);
+
+  svg.append("rect")
+      .attr("class","legend_out")
+      .attr("width",20)
+      .attr("height",16)
+      .attr("fill","#6CB33F")
+      .attr("transform", "translate(0,25)")
+      .on("mouseover",mouseoverLabelOut)
+      .on("mouseout",mouseoutLableOut);
+  svg.append("text")
+      .text("Undergraduate Students")
+      .attr("class","legend_out")
+      .style("fill","#5C6F7C")
+      .style("font-size","1.1rem")
+      .attr("transform", "translate(28,40)")
+      .on("mouseover",mouseoverLabelOut)
+      .on("mouseout",mouseoutLableOut);
+
+
+
+
+var rects = svg.selectAll(".rect")
+        .data(reports_full)
+        .enter();
+
+
+
+rects.append("rect")
+        .attr("class","rects")
+        .attr("id",function(d,i,j){
+          return "rect"+i;
+        })
+        .attr("x", function(d,i){
+          return xScale(i)*1.4;
+        })
+        .attr("y",function(d){
+          var min = yScale.domain()[0];
+          return yScale(min);
+        })
+        .style("filter","url(#drop-shadow)")
+        .attr("transform", "translate(0,50)")
+        .attr("width", xScale.bandwidth() - rectPadding -40)
+        .attr("height", function(d){
+          return 0;
+        })
+        .on("mouseover", mouseover)
+        .on("mouseout",mouseout)
+        .transition()
+        .delay(function(d,i){
+          return i*200+200;
+        })
+        .duration(700)
+        .ease(d3.easeBounce)
+        .attr("y", function(d){
+
+          console.log(d[1]);
+          return yScale(d[1]);
+        })
+        .attr("fill", "#00728F")
+        .attr("height", function(d){
+           return width - padding.left - padding.right - yScale(d[1])-230;
+
+        });
+
+
+        rects.append("rect")
+            .attr("class","rects2")
+            .attr("transform","translate("+(xScale.bandwidth() - rectPadding-30)+",50)")
+            .attr("x", function(d,i){
+              return xScale(i)*1.4;
+            })
+            .attr("y",function(d){
+              var min = yScale.domain()[0];
+              return yScale(min);
+            })
+            .style("filter","url(#drop-shadow)")
+            .attr("width", xScale.bandwidth() - rectPadding-40)
+            .attr("height", function(d){
+              return 0;
+            })
+        .on("mouseover", mouseover)
+        .on("mouseout",mouseout)
+            .transition()
+            .delay(function(d,i){
+              return i*200+200;
+            })
+            .duration(700)
+            .ease(d3.easeBounce)
+            .attr("y", function(d){
+              return yScale(d[2]);
+            })
+            .attr("fill", "#6CB33F")
+            .attr("height", function(d,i,j){
+              return width - padding.left - padding.right - yScale(d[2]) - 230;
+            });
+
+
+
+        var label_svg = d3.select("#bar").append("svg")
+                          .attr("id","labelSvg")
+                          .attr("width",660)
+                          .attr("height",50);
+        var legend = label_svg.selectAll(".legends")
+            .data(reports_full)
+            .enter();
+      legend.append("text")
+            .attr("class", "legends")
+            .attr("id",function(d,i){
+              return i;
+            })
+            .style("pointer-events", "stroke")
+            .attr("text-anchor","start")
+            .attr("transform", "translate(0,-100)")
+            .attr("x",function(d,i){
+              return xScale(i)*1.4+20;
+            })
+            .attr("y",function(d){
+              return 0;
+            })
+            .attr("dy", function(){
+              return xScale.bandwidth() + padding.right + rectPadding;
+            })
+            .attr("dx", function(d){
+              return 5;
+            })
+            .text(function(d,i){
+                return d[0];
+
+            })
+            .style("font-weight",400);
+
+
+
+
+   var text = svg.selectAll(".texts")
+            .data(reports_full)
+            .enter();
+
+            text.append("text")
+            .attr("class", "texts")
+            .attr("id",function(d,i){
+              return "text"+i;
+            })
+            .attr("transform", "translate(-5,50)")
+            .attr("x",function(d,i){
+              return xScale(i)*1.4;
+            })
+            .attr("y", function(d){
+              var min = yScale.domain()[0]
+              return yScale(min);
+            })
+            .attr("dx", function(){
+              return xScale.bandwidth() - 75;
+            })
+            .attr("dy", function(d){
+              return -400;
+            })
+            .text(function(d){
+              return d[1];
+            })
+            .attr("opacity",0)
+            .transition()
+            .delay(function(d,i){
+              return i*200+200;
+            })
+            .duration(700)
+            .ease(d3.easeBounce)
+            .attr("opacity",1)
+            .style("fill","#5C6F7C")
+            .attr("dy", function(d){
+              return yScale(d[1]) - 265;
+            });
+
+
+        text.append("text")
+            .attr("class", "texts2")
+            .attr("id",function(d,i){
+              return "text" + i+ "2";
+            })
+            .attr("transform", "translate("+(xScale.bandwidth() - rectPadding-35)+",50)")
+            .attr("x",function(d,i){
+              return xScale(i)*1.4;
+            })
+            .attr("y", function(d){
+              var min = yScale.domain()[0]
+              return yScale(min);
+            })
+            .attr("dx", function(){
+              return xScale.bandwidth() - 75;
+            })
+            .attr("dy", function(d){
+              return -400;
+            })
+            .text(function(d){
+              return d[2];
+            })
+            .attr("opacity",0)
+            .transition()
+            .delay(function(d,i){
+              return i*200+200;
+            })
+            .duration(700)
+            .ease(d3.easeBounce)
+            .attr("opacity",1)
+            .style("fill","#5C6F7C")
+            .attr("dy", function(d){
+              return yScale(d[2]) - 265;
+            });
+
+    function mouseoverLabelIn(){
+         d3.select("#chartSvg").selectAll(".rects")
+            .transition()
+            .duration(500)
+            .attr("fill","#F15D22");
+
+          d3.select("#chartSvg").select(".legend_in")
+            .attr("fill","#F15D22")
+            .style("filter","url(#drop-shadow)");
+      }
+
+      function mouseoutLableIn(){
+        d3.select("#chartSvg").selectAll(".rects")
+          .transition()
+          .duration(500)
+          .attr("fill","#00728F");
+
+        d3.select("#chartSvg").select(".legend_in")
+          .attr("fill","#00728F")
+          .style("filter","");
+      }
+
+
+      function mouseoverLabelOut(){
+         d3.select("#chartSvg").selectAll(".rects2")
+            .transition()
+            .duration(500)
+            .attr("fill","#F15D22");
+          d3.select("#chartSvg").select(".legend_out")
+            .attr("fill","#F15D22")
+            .style("filter","url(#drop-shadow)");
+      }
+
+      function mouseoutLableOut(){
+        d3.select("#chartSvg").selectAll(".rects2")
+          .transition()
+          .duration(500)
+          .attr("fill","#6CB33F");
+        d3.select("#chartSvg").select(".legend_out")
+          .attr("fill","#6CB33F")
+          .style("filter","");
+      }
+
+
+    function mouseover(d,i){
+
+          d3.select(this)
+            .attr("fill","#F15D22");
+            if (this.className.animVal == "rects")
+             { 
+              $("#"+i).text("Graduate").css("font-size","1em").css("font-weight",400);
+              $("#text"+i).css("font-weight","bold");
+            }
+            else
+            {
+              $("#"+i).text('Undergraduate').css("font-size","1em").css("font-weight",400);
+             $("#text"+i+"2").css("font-weight","bold");}
+
+        }
+
+
+        function mouseout(d,i){
+           
+          d3.select(this)
+            .transition()
+            .duration(500)
+            .attr("fill",function(){if(this.className.animVal == "rects") return "#00728F"; else return "#6CB33F";});
+
+
+
+          $("#"+i).text("course "+(i+1));
+          $("#"+i).css("font-weight",400);
+          $("#"+i).css("text-shadow","");
+           $("#text"+i).css("font-weight","");
+          $("#text"+i+"2").css("font-weight","");
+
+        }
 }
-
-  //Group the bubbles use negtive strength to make the bubble sparse
-  function dismiss(){
-    hideTitle();
-    var simulation = d3.forceSimulation(nodes);
-       simulation.force("charge", d3.forceManyBody().strength(-15))
-             .force("center", d3.forceCenter(width/2.5, height/2-200))
-               .force("collision", d3.forceCollide().radius(function(d) {
-          return d.radius;
-        }))
-           .on("tick", ticked);
-
-  }
-
-  //Group the bubble to the center point.
-  function go_center(){
-    hideTitle();
-    var simulation = d3.forceSimulation(nodes);
-    simulation.force("charge", d3.forceManyBody().strength(20))
-          .force("center", d3.forceCenter(width/2.5, height/2-200))
-          .force("collision", d3.forceCollide().radius(function(d){
-                    return d.radius;
-                  }))
-          .on("tick",ticked);
-  }
-
-
-    
-
-
-    // Create the bubbles based on nodes data.
-    function ticked() {
-        
-        var u = d3.select("svg")
-          .selectAll("circle")
-          .data(nodes)
-        u.enter()
-          .append("circle")
-          .attr("r", function(d) {
-            return d.radius
-          })
-          .style("fill",function(d){
-            return colorScale[d.category];
-          })
-          .style("z-index",-1)
-          .style("stroke", function(d){
-      return d3.rgb(colorScale[d.category]).darker();
-        }).style("stroke-width",1)
-          .merge(u)
-          .attr('cx', function(d) {
-            return d.x;
-          })
-          .attr('cy', function(d) {
-            return d.y + 200;
-          })
-          .on("mouseover", showDetail)
-          .on("mouseout", hideDetail)
-        u.exit().remove()
-}
-
-
-
- 
-  function showDetail(d){
-    
-
-    var detail = '<span class="name">Color: </span><span class="value">' + colorScale[d.category] + '</span><br/>' +
-                  '<span class="name">Team: </span><span class="value">' +
-                  (d.category + 1) +
-                  '</span><br/>' + 
-        '<span class="name">Radius: </span><span class="value">' +
-                  d3.format("d")(d.radius) +
-                  '</span>';
-        d3.select(this)
-      .style("stroke","#333333")
-      .style("stroke-width",2);
-
-        showTooltip(detail,d.x+d.radius+20, d.y-350);
-
-  }
-
-  function hideDetail(){
-    d3.select(this)
-      .style("stroke", function(d){
-      return d3.rgb(colorScale[d.category]).darker();
-    }).style("stroke-width",1);
-
-    hideTooltip()
-  }
-
-
-
-  
-
-  function showTooltip(content, x, y){
-    tooltip.style("margin-left",x)
-         .style("margin-top",y)
-         .html(content);
-    tooltip.transition()
-         .duration(500)
-           .style("opacity", 1.0);
-
-  }
-
-  function hideTooltip(){
-    tooltip.transition()
-         .duration(500)
-         .style("opacity",0);
-  }
-
-
-
-
-//show the sparse bubble chart when call function chart()
-dismiss();
-
-//call different function to group bubbles in different ways when click on different buttons.
-$("#btn_center").click(function(){
-  go_center();
-  $(this).attr("disabled", true);
-  $("#btn_line").attr("disabled",false);
-  $("#btn_dismiss").attr("disabled",false);
-});
-$("#btn_line").click(function(){
-  split();
-  $(this).attr("disabled", true);
-  $("#btn_center").attr("disabled",false);
-  $("#btn_dismiss").attr("disabled",false);
-});
-$("#btn_dismiss").click(function(){
-  dismiss();
-  $(this).attr("disabled", true);
-  $("#btn_line").attr("disabled",false);
-  $("#btn_center").attr("disabled",false);
-});
-
-
-}
-
-
-chart(50);
-$("#number").text("50 Bubbles");
