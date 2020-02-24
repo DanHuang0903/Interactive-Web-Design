@@ -1,7 +1,7 @@
 
 
 function chart(reports_full){
-  d3.selectAll('svg').remove();
+  d3.select("#bar").selectAll('svg').remove();
 
 
   var reports_total = [80,499,322,221,142];

@@ -120,16 +120,16 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
 
-                    <!-- DEMO1 Random Numbers -->
+                    <!-- DEMO1 Histogram -->
 
                   <div class="tab-pane fade show active container-fluid" id="demo21" role="tabpanel" aria-labelledby="demo21-tab">
                       
                       <div class="container-fluid">
                       <div class="row">
                         <div class="col-md-8">
-                        <div  id="bar">
+                        <div  id="bar" style="overflow: auto;">
                           <br/>
-                          <h3 class="" >Course Inrollment - <span id="dept"></span></h3>
+                          <h3 class="" >Course Inrollment Data - <span class="dept"></span></h3>
                         </div>
                         </div>
                         <div class="col-md-4">
@@ -175,11 +175,54 @@
                 </div>
 
                    
-                   <!-- DEMO2 Drag and Drop -->
+                   <!-- DEMO2 Distribution -->
 
                   <div class="tab-pane fade container-fluid" id="demo22" role="tabpanel" aria-labelledby="demo22-tab">
-                    
-                </div>
+                     <div class="container-fluid">
+                      <div class="row">
+                    <div class="col-md-8" id="distribution" style="overflow: auto;">
+                      <br/>
+                          <h3 class="" >Course Inrollment Distribution - <span class="dept"></span></h3>
+                    </div>
+
+                      <div class="col-md-4">
+                           <!-- Card -->
+                            <div class="card" style="height: 24em;margin-top: 2em">
+                              <!-- Card  -->
+                             <div class="card-image">
+                                   <!-- dropdown -->
+                            <div class="dropdown" style="margin:3em">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Select a department
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item selection" href="#" onclick="chart2(data21)">Education School</a>
+                                  <a class="dropdown-item selection" href="#" onclick="chart2(data22)">Enginnering School</a>
+                                  <a class="dropdown-item selection" href="#" onclick="chart2(data23)">Medical School</a>
+                                </div>
+                              </div>
+                             </div>
+                                       <hr/>
+                              <!-- Card content -->
+                              <div class="card-body">
+
+                                <!-- Title -->
+                                <h4 class="card-title"></h4>
+                                <!-- Text -->
+                                <p class="card-text">
+                                    Hover either "Gradute" or "Undergraduate" to see the distribution on different courses.<br/>
+                                    Hover each course to see the distribution on graduate and undergraduate.<br/>
+                                    Have fun!
+                                </p>
+                            
+                              </div>
+
+                            </div>
+
+                            </div>
+                            </div>
+                          </div>
+                        </div>
 
                     <!-- DEMO3 Bubbles -->
 
@@ -204,7 +247,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="external/jquery/jquery.js"></script>
     <script type="text/javascript" src="d3/d3.min.js"></script>
+    <script type="text/javascript" src="viz.v1.1.0.min.js"></script>
     <script src="dv_demo1.js"></script>
+    <script src="dv_demo2.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -212,17 +257,24 @@
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
+            chart(data1);
+            chart2(data21);
 
         });
     var data1 = [['course 1',123,321],['course 2',273,143],['course 3',351,233],['course 4',221,309],['course 5',310,298]]; 
    var data2 = [['course 1',109,391],['course 2',103,253],['course 3',151,433],['course 4',121,209],['course 5',110,398]]; 
    var data3 = [['course 1',99,291],['course 2',143,353],['course 3',101,433],['course 4',221,309],['course 5',210,398]]; 
-   chart(data1);
-   $("#dept").text("Education School");
+
+    var data21 = [['Graduate','course 1',123],['Graduate','course 2',273],['Graduate','course 3',351],['Graduate','course 4',221],['Graduate','course 5',310],['Undergraduate','course 1',321],['Undergraduate','course 2',143],['Undergraduate','course 3',233],['Undergraduate','course 4',309],['Undergraduate','course 5',298]]; 
+   var data22 = [['Graduate','course 1',109],['Graduate','course 2',103],['Graduate','course 3',151],['Graduate','course 4',121],['Graduate','course 5',110],['Undergraduate','course 1',391],['Undergraduate','course 2',253],['Undergraduate','course 3',433],['Undergraduate','course 4',209],['Undergraduate','course 5',398]]; 
+   var data23 = [['Graduate','course 1',99],['Graduate','course 2',143],['Graduate','course 3',101],['Graduate','course 4',221],['Graduate','course 5',210],['Undergraduate','course 1',291],['Undergraduate','course 2',353],['Undergraduate','course 3',433],['Undergraduate','course 4',309],['Undergraduate','course 5',398]]; 
+
+   $(".dept").text("Education School");
 
    $(".selection").click(function(){
-    $("#dept").text($(this).text());
+    $(".dept").text($(this).text());
    })
+
   </script>
 
 </body>
