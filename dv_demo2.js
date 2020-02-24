@@ -1,7 +1,7 @@
 function chart2(dataset){
 	 d3.select("#distribution").selectAll('svg').remove();
 	 var width = 700;
- 	 var height = 400;
+ 	 var height = 330;
  	 var bar_color ={Graduate:"#F8971D", Undergraduate:"#6CB33F"};
 
      var svg = d3.select("#distribution")
@@ -42,7 +42,7 @@ function chart2(dataset){
       .pad(2)
       .height(height-50)
       .width(width/3)
-      .barSize(35)
+      .barSize(45)
       .fill(d=>bar_color[d.primary])    
     ,viz.bP()
       .data(dataset)
@@ -51,7 +51,7 @@ function chart2(dataset){
       .pad(1)
       .height(height-50)
       .width(width/3)
-      .barSize(35)
+      .barSize(45)
       .fill(d=>bar_color[d.primary])
   ];
 

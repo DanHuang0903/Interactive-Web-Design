@@ -325,6 +325,18 @@ z-index:100;
   #trash h4 .ui-icon { float: left; }
   #trash .gallery h5 { display: none; }
 
+
+  .methods{
+    color: #008000;
+    font-weight: bold;
+  }
+
+  .dept{
+    font-size: 0.7em;
+  }
+  .hover{
+    color:#CD5C5C;
+  }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
