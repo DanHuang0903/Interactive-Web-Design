@@ -342,6 +342,10 @@ z-index:100;
   }
   .hover{
     color:#CD5C5C;
+    font-weight: bold;
+  }
+  .card-body{
+    overflow: auto;
   }
 /* ---------------------------------------------------
     MEDIAQUERIES
