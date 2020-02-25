@@ -1,48 +1,38 @@
  	//Disable the overview button when call function chart
- 	$("#btn_overview").attr("disabled",true);
+	var data = [[['course 1',123,321],['course 2',273,143],['course 3',351,233],['course 4',221,309],['course 5',310,298]],[['course 1',109,391],['course 2',103,253],['course 3',151,433],['course 4',121,209],['course 5',110,398]],[['course 1',99,291],['course 2',143,353],['course 3',101,433],['course 4',221,309],['course 5',210,398]]]; 
+
+	$("#btn_overview").attr("disabled",true);
   	$("#btn_program").attr("disabled",false);
   	$("#btn_dept").attr("disabled",false);
 
-  	var width = 700, height = 400
+  	var width = 600, height = 400
   	//the center potion of grouping bubbles.
-  	var center = {x:width/1.8, y:height/2 }
+  	var center = {x:width/2, y:height/2.2 }
   		//x potions of each team.
-  	var deptTitleX = {'Education':50, 'Enginnering':250, 'Medical':450};
-  	var programTitleX = {'Undergraduate':200, 'Graduate':450;
-
+  	var deptTitleX = {'Education':0, 'Enginnering':200, 'Medical':400};
+  	var courseTitleX = {'Course 1':0, 'Course 2':250, "Course 3": 450, "Course 4":0, "Course 5": 250};
+  	var courseTitleY = {'Course 1':50, 'Course 2':50, "Course 3": 50, "Course 4":250, "Course 5": 250};
   	var colorScale = ['#F8971D','#FFD24F', '#6CB33F']
+  	var colorScale2 = ['#FFD24F', '#6CB33F']
 	var xCenter = [50,250,450]
 	var numNodes = 15;
 
 	var svg = d3.select("#analytics")
 				.append("svg")
+				.attr("id","bubble_svg")
 				.style("width","100%")
-				.style("height",350);
+				.style("height",400);
 
 	//Form the nodes data.
 	var nodes = d3.range(numNodes).map(function(d,i) {
-			  return {radius: Math.random() * 25,
-			  		  category: i%3}
+			  return {radius: (data[i%3][i%5][1]+data[i%3][i%5][2])/30,
+			  		  category: i%3,
+			  		  course:i%5}
 			});
 
 
 
-	var tooltip = d3.select("#analytics")
-					.append("div")
-					.style("z-index","10")
-					.attr("id","tooltip")
-					.attr("class",'tooltips')
-					.style("width","8em")
-					.style("height","4em")
-					.style("pointer-events","none")
-					.style("position","absolute")
-					.style("text-align","center")
-					.style("padding-top","0.5em")
-					.style("padding-bottom","0.5em")
-					.style("font","1em sans-serif")
-		            .style("background","lightsteelblue")
-					.style("border-radius","0.4em");
-	tooltip.style("opacity",0);
+	
 
 
 
@@ -69,10 +59,11 @@
 		//Group the bubbles in depts when call this function			
   	function split(){
   		showTitle(); //show the labels
+  		hideTitle2();
   		var simulation = d3.forceSimulation(nodes);
-			 simulation.force("charge", d3.forceManyBody().strength(13))
+			 simulation.force("charge", d3.forceManyBody().strength(25))
 			  .force("x", d3.forceX().x(function(d){
-			  	return d.x + (xCenter[d.category] - d.x);
+			  	return d.x + (xCenter[d.category] - d.x) - 20;
 			  }))
 			  .force("y", d3.forceY().y(function(d){
 			  	return d.y + (height/2-200 - d.y);
@@ -84,9 +75,50 @@
 		
 }
 
+	function showTitle2(){
+		var courseData = d3.keys(courseTitleX);
+		var courses = d3.select("#analytics")
+					  .select('svg')
+					  .selectAll('.courses')
+					  .data(courseData);
+			courses.enter()
+				 .append('text')
+				 .attr('class','courses')
+				 .attr('x', function(d){return courseTitleX[d];})
+				 .attr('y',function(d){return courseTitleY[d];})
+				 .attr('text-anchor', 'start')
+				 .text(function(d){return d;});
+	}
+
+	//Hide the dept labels when call this function
+	function hideTitle2(){
+		d3.select("#analytics").select('svg').selectAll(".courses").remove();
+	}
+
+		//Group the bubbles in depts when call this function			
+  	function split2(){
+  		showTitle2(); //show the labels
+  		hideTitle();
+
+  		var simulation = d3.forceSimulation(nodes);
+			 simulation.force("charge", d3.forceManyBody().strength(25))
+			  .force("x", d3.forceX().x(function(d,i){
+			  	return d3.values(courseTitleX)[d.course];
+			  }))
+			  .force("y", d3.forceY().y(function(d){
+			  	return d3.values(courseTitleY)[d.course];
+			  }))
+			  .force("collision", d3.forceCollide().radius(function(d) {
+			    return d.radius;
+			  }))
+			  .on("tick", ticked);
+		
+}
+
 	//Group the bubble to the center point.
 	function go_center(){
 		hideTitle();
+		hideTitle2()
 		var simulation = d3.forceSimulation(nodes);
 		simulation.force("charge", d3.forceManyBody().strength(50))
 				  .force("center", d3.forceCenter(width/2.5, height/2-200))
@@ -142,21 +174,14 @@
 			  u.exit().remove()
 }
 
-	function showDetail(d){
-		
+	function showDetail(d,i){
+	var details =[d3.keys(deptTitleX)[d.category], data[i%3][i%5][0], "Students: "+Math.round(d.radius*30)];
 
-		var detail = '<span class="name">Department: </span><span class="value">' + deptTitleX[d] + '</span><br/>' +
-                  '<span class="name">Team: </span><span class="value">' +
-                  (d.category + 1) +
-                  '</span><br/>' + 
-				'<span class="name">Radius: </span><span class="value">' +
-                  d3.format("d")(d.radius) +
-                  '</span>';
         d3.select(this)
 		  .style("stroke","#333333")
 		  .style("stroke-width",2);
 
-        showTooltip(detail,d.x+d.radius+20, d.y-350);
+        showTooltip(d.x+d.radius+10, d.y+150, details);
 
 	}
 
@@ -170,20 +195,59 @@
 	}
 
 
-		function showTooltip(content, x, y){
-		tooltip.style("margin-left",x)
-			   .style("margin-top",y)
-			   .html(content);
-		tooltip.transition()
-			   .duration(500)
-		       .style("opacity", 1.0);
+		function showTooltip(x, y, details){
+		var tooltip = d3.select("#bubble_svg").append("rect")
+					.attr("class",'tooltips')
+					.style("width","7em")
+					.style("height","4em")
+					.style("pointer-events","none")
+					.style("text-align","center")
+					.style("padding-top","0.5em")
+					.style("padding-bottom","0.5em")
+		            .attr("fill","#666666")
+		            .attr("transform","translate("+x+","+y+")")
+		            .attr("opacity",0);
 
+		  var detail1 = d3.select("#bubble_svg").append("text")
+		  				  .attr("id","text_content")
+		  				  .attr("class","tooltips")
+		  				  .attr("fill","#eee")
+		  				  .attr("transform","translate("+(x+5)+","+(y+25)+")")
+		  				  .attr("opacity",0)
+		  				  .text(details[0]);
+		   var detail2 = d3.select("#bubble_svg").append("text")
+		  				  .attr("id","text_content")
+		  				  .attr("class","tooltips")
+		  				  .attr("fill","#eee")
+		  				  .attr("transform","translate("+(x+5)+","+(y+40)+")")
+		  				  .attr("opacity",0)
+		  				  .text(details[1]);
+
+		  	var detail3 = d3.select("#bubble_svg").append("text")
+		  				  .attr("id","text_content")
+		  				  .attr("class","tooltips")
+		  				  .attr("fill","#eee")
+		  				  .attr("transform","translate("+(x+5)+","+(y+55)+")")
+		  				  .attr("opacity",0)
+		  				  .text(details[2]);
+
+		tooltip.transition()
+			.duration(500)
+		    .style("opacity", 1.0);
+
+		detail1.transition()
+			.duration(500)
+		    .style("opacity", 1.0);
+	   detail2.transition()
+			.duration(500)
+		    .style("opacity", 1.0);
+		detail3.transition()
+			.duration(500)
+		    .style("opacity", 1.0);
 	}
 
 	function hideTooltip(){
-		tooltip.transition()
-			   .duration(500)
-			   .style("opacity",0);
+		d3.select("#analytics").selectAll(".tooltips").remove();
 	}
 
 
@@ -195,10 +259,25 @@ $("#btn_overview").click(function(){
 	$(this).attr("disabled", true);
 	$("#btn_dept").attr("disabled",false);
 	$("#btn_program").attr("disabled",false);
+	$("#group").text("Oveview");
 });
+
+$("#btn_program").click(function(){
+	split2();
+	$(this).attr("disabled", true);
+	$("#btn_overview").attr("disabled",false);
+	$("#btn_dept").attr("disabled",true);
+	$("#group").text("By Course");
+});
+
 $("#btn_dept").click(function(){
 	split();
 	$(this).attr("disabled", true);
 	$("#btn_overview").attr("disabled",false);
-	$("#btn_program").attr("disabled",false);
+	$("#btn_program").attr("disabled",true);
+	$("#group").text("By Department");
 });
+
+
+
+

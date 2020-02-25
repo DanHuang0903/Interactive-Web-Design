@@ -353,6 +353,12 @@ z-index:100;
     font-weight: bold;
     color: gray;
   }
+
+  .courses{
+    font-size: 1em;
+    font-weight: bold;
+    color: gray;
+  }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
