@@ -14,7 +14,7 @@ function chart(reports_full){
               .append("svg")
               .attr("id","chartSvg")
               .attr("width",660)
-              .attr("height",300);
+              .attr("height",350);
 
  var defs = svg.append("defs");
   var filter = defs.append("filter")
@@ -127,7 +127,7 @@ rects.append("rect")
         })
         .attr("fill", "#00728F")
         .attr("height", function(d){
-           return width - padding.left - padding.right - yScale(d[1])-230;
+           return width - padding.left - padding.right - yScale(d[1])-170;
 
         });
 
@@ -160,7 +160,7 @@ rects.append("rect")
             })
             .attr("fill", "#6CB33F")
             .attr("height", function(d,i,j){
-              return width - padding.left - padding.right - yScale(d[2]) - 230;
+              return width - padding.left - padding.right - yScale(d[2]) - 170;
             });
 
 

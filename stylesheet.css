@@ -49,6 +49,12 @@ a, a:hover, a:focus {
     margin: 40px 0;
 }
 
+.navlink {
+    text-decoration: none;
+    color:#dddddd;
+}
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

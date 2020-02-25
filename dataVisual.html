@@ -48,10 +48,10 @@
                     <a href="index.html">Application for<br/> Interactive Web Design</a>
                 </li>
                  <li>
-                    <a href="cv.html">CV</a>
+                    <a href="cv.html"><i class="fas fa-file-alt fa-lg"></i>&nbsp;&nbsp;CV</a>
                 </li>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">DEMO</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-line fa-lg"></i>&nbsp;&nbsp;DEMO</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="interaction.html">Interactive Webpage</a>
@@ -64,24 +64,22 @@
     
                 
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="mailto:dh4tx@umsystem.edu"><i class="fas fa-envelope fa-lg"></i>&nbsp;&nbsp;Contact</a>
                 </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Download source</a>
+                    <a href="#" class="download"><i class="fas fa-cloud-download-alt fa-lg"></i>&nbsp;&nbsp;Download source</a>
                 </li>
             </ul>
         </nav>
 
         <!-- Page Content Holder -->
         <div id="content">
-
-            <nav class="navbar navbar-expand-lg bg-light navbar-light">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="navbar-btn bg-light hoverable">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn hoverable">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -89,14 +87,8 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                         
-                        </ul>
-                    </div>
                 </div>
-            </nav>
+                <hr/>
             
             <h2>Data Visualization</h2>
             <p>A simple question: could you pick the largest number among 50 numbers by only one glance? Well, I don't believe so. However, everyone can tell the highest bar in a bar chart in 0.1 second. Shape and color is the most intuitive approach to convey infomation for humanbeings. In other words, data visualization is a sort of interactive web tool which provides a lot of information straightforwardly.</p><br/>
@@ -126,12 +118,14 @@
                   <div class="tab-pane fade show active container-fluid" id="demo21" role="tabpanel" aria-labelledby="demo21-tab">
                       
                       <div class="container-fluid">
+                        <div class="row">
+                          <br/>
+                          <h3 class="" style="margin-top: 1em">Course Inrollment <span class="methods">Data</span> - <span class="dept"></span></h3>
+                        </div>
+
                       <div class="row">
                         <div class="col-md-8">
-                        <div  id="bar" style="overflow: auto;">
-                          <br/>
-                          <h3 class="" >Course Inrollment <span class="methods">Data</span> - <span class="dept"></span></h3>
-                        </div>
+                       <div  id="bar" style="overflow: auto;"></div>
                         </div>
                         <div class="col-md-4">
                            <!-- Card -->
@@ -139,10 +133,10 @@
                               <!-- Card  -->
                              <div class="card-image">
                                    <!-- dropdown -->
-                            <div class="dropdown" style="margin:3em">
+                            <div class="dropdown" style="margin:1em">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Select a department
-                                </button>
+                                </button> <i class="fas fa-hand-point-left fa-lg indigo-text animated wobble"></i>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item selection" href="#" onclick="chart(data1)">Education School</a>
                                   <a class="dropdown-item selection" href="#" onclick="chart(data2)">Enginnering School</a>
@@ -180,10 +174,13 @@
 
                   <div class="tab-pane fade container-fluid" id="demo22" role="tabpanel" aria-labelledby="demo22-tab">
                      <div class="container-fluid">
+                      <div class="row">                
+                          <h3 class="" style="margin-top: 1em">Course Inrollment <span class="methods">Distribution</span> - <span class="dept"></span></h3>
+                        </div>
+
                       <div class="row">
                     <div class="col-md-8" id="distribution" style="overflow: auto;">
-                      <br/>
-                          <h3 class="" >Course Inrollment <span class="methods">Distribution</span> - <span class="dept"></span></h3>
+                      
                     </div>
 
                       <div class="col-md-4">
@@ -192,10 +189,10 @@
                               <!-- Card  -->
                              <div class="card-image">
                                    <!-- dropdown -->
-                            <div class="dropdown" style="margin:3em">
+                            <div class="dropdown" style="margin:1em">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Select a department
-                                </button>
+                                </button> <i class="fas fa-hand-point-left fa-lg indigo-text animated wobble"></i>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item selection" href="#" onclick="chart2(data21)">Education School</a>
                                   <a class="dropdown-item selection" href="#" onclick="chart2(data22)">Enginnering School</a>

@@ -1,7 +1,7 @@
 function chart2(dataset){
 	 d3.select("#distribution").selectAll('svg').remove();
 	 var width = 700;
- 	 var height = 330;
+ 	 var height = 400;
  	 var bar_color ={Graduate:"#F8971D", Undergraduate:"#6CB33F"};
 
      var svg = d3.select("#distribution")
@@ -95,7 +95,7 @@ function mouseover(d){
   d3.select(this)
   .selectAll("text")
   .style("fill","#00728F")
-  .classed("shadow",true);
+  .style("font-weight","bold");
 
 
 
@@ -112,7 +112,8 @@ function mouseout(d){
   d3.select(this)
   .selectAll("text")
   .style("fill","#5C6F7C")
-  .classed("shadow",false);
+  .style("font-weight","");
+
   d3.select(this).style("border","0px solid #F15D22");
 }
 
