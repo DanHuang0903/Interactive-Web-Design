@@ -45,10 +45,10 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="index.html">Application for<br/> Interactive Web Design</a>
+                    <a href="index.html"><i class="fas fa-home fa-lg"></i>&nbsp;&nbsp;Home</a>
                 </li>
                  <li>
-                    <a href="cv.html"><i class="fas fa-file-alt fa-lg"></i>&nbsp;&nbsp;CV</a>
+                    <a href="cv.html"><i class="fas fa-file-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;CV</a>
                 </li>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-line fa-lg"></i>&nbsp;&nbsp;DEMO</a>
@@ -224,7 +224,45 @@
                     <!-- DEMO3 Bubbles -->
 
                   <div class="tab-pane fade container-fluid" id="demo23" role="tabpanel" aria-labelledby="demo23-tab">
-        
+                   <div class="container-fluid">
+                        <div class="row">                
+                          <h3 class="" style="margin-top: 1em">Course Inrollment <span class="methods">Analytics</span> - <span class="dept"></span></h3>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-8" id="analytics">
+                          </div>
+
+                          <div class="col-md-4">
+                             <!-- Card -->
+                            <div class="card" style="height: 24em;margin-top: 2em">
+                              <!-- Card  -->
+                             <div class="card-image">
+                                   <!-- bottons -->
+                                <button id="btn_overview" class="btn btn-primary" style="margin: 1em; width: 14em;">Overview</button>
+                                <button id="btn_program" class="btn btn-primary" style="margin: 1em; width: 14em;">By Program</button>
+                                <button id="btn_dept" class="btn btn-primary" style="margin: 1em; width: 14em;">By Department</button>
+                             </div>
+                                       <hr/>
+                              <!-- Card content -->
+                              <div class="card-body">
+
+                                <!-- Title -->
+                                <h4 class="card-title"></h4>
+                                <!-- Text -->
+                                <p class="card-text">
+                                    <span class="hover">HOVER</span> either "Gradute" or "Undergraduate" to see the distribution on different courses.<br/>
+                                    <span class="hover">HOVER</span> each course to see the distribution on graduate and undergraduate.<br/>
+                                    Have fun!
+                                </p>
+                            
+                              </div>
+
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
 
                   <!-----End of DEMO3----->
@@ -247,6 +285,7 @@
     <script type="text/javascript" src="viz.v1.1.0.min.js"></script>
     <script src="dv_demo1.js"></script>
     <script src="dv_demo2.js"></script>
+    <script src="dv_demo3.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

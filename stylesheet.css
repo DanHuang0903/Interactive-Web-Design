@@ -347,6 +347,12 @@ z-index:100;
   .card-body{
     overflow: auto;
   }
+
+  .depts{
+    font-size: 1em;
+    font-weight: bold;
+    color: gray;
+  }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
