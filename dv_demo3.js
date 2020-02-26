@@ -10,7 +10,7 @@
   	var center = {x:width/2.5, y:height/2.2 }
   		//x potions of each team.
   	var deptTitleX = {'Education':100, 'Enginnering':320, 'Medical':550};
-  	var numberTitleX = {'Less than 450':100, ' Equal or moare than 450':450};
+  	var numberTitleX = {'Less than 450':100, ' Equal or more than 450':450};
   //	var courseTitleX = {'Course 1':0, 'Course 2':250, "Course 3": 450, "Course 4":0, "Course 5": 250};
   //	var courseTitleY = {'Course 1':50, 'Course 2':50, "Course 3": 50, "Course 4":250, "Course 5": 250};
   	var colorScale = ['#F8971D','#FFD24F', '#6CB33F']
@@ -265,6 +265,7 @@ $("#btn_overview").click(function(){
 	$("#btn_dept").attr("disabled",false);
 	$("#btn_number").attr("disabled",false);
 	$("#group").text("Oveview");
+
 });
 
 $("#btn_number").click(function(){
