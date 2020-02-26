@@ -13,8 +13,8 @@
   	var numberTitleX = {'Less than 450':100, ' Equal or more than 450':450};
   //	var courseTitleX = {'Course 1':0, 'Course 2':250, "Course 3": 450, "Course 4":0, "Course 5": 250};
   //	var courseTitleY = {'Course 1':50, 'Course 2':50, "Course 3": 50, "Course 4":250, "Course 5": 250};
-  	var colorScale = ['#F8971D','#FFD24F', '#6CB33F']
-  	var colorScale2 = ['#FFD24F', '#6CB33F']
+  	var colorScale = ['#F1B82D','#000000', '#69901D']
+
 	var xCenter = [110,380,600]
 	var numNodes = 15;
 
@@ -209,7 +209,7 @@
 					.style("text-align","center")
 					.style("padding-top","0.5em")
 					.style("padding-bottom","0.5em")
-		            .attr("fill","#666666")
+		            .attr("fill","#8F8884")
 		            .attr("transform","translate("+x+","+y+")")
 		            .attr("opacity",0);
 

@@ -54,7 +54,7 @@ function chart(reports_full){
       .attr("class","legend_in")
       .attr("width",20)
       .attr("height",16)
-      .attr("fill","#00728F")
+      .attr("fill","#F1B82D")
       .attr("transform", "translate(0,0)")
       .on("mouseover",mouseoverLabelIn)
       .on("mouseout",mouseoutLableIn);
@@ -72,7 +72,7 @@ function chart(reports_full){
       .attr("class","legend_out")
       .attr("width",20)
       .attr("height",16)
-      .attr("fill","#6CB33F")
+      .attr("fill","#000000")
       .attr("transform", "translate(0,25)")
       .on("mouseover",mouseoverLabelOut)
       .on("mouseout",mouseoutLableOut);
@@ -125,7 +125,7 @@ rects.append("rect")
           console.log(d[1]);
           return yScale(d[1]);
         })
-        .attr("fill", "#00728F")
+        .attr("fill", "#F1B82D")
         .attr("height", function(d){
            return width - padding.left - padding.right - yScale(d[1])-170;
 
@@ -158,7 +158,7 @@ rects.append("rect")
             .attr("y", function(d){
               return yScale(d[2]);
             })
-            .attr("fill", "#6CB33F")
+            .attr("fill", "#000000")
             .attr("height", function(d,i,j){
               return width - padding.left - padding.right - yScale(d[2]) - 170;
             });
@@ -280,10 +280,10 @@ rects.append("rect")
          d3.select("#chartSvg").selectAll(".rects")
             .transition()
             .duration(500)
-            .attr("fill","#F15D22");
+            .attr("fill","#69901D");
 
           d3.select("#chartSvg").select(".legend_in")
-            .attr("fill","#F15D22")
+            .attr("fill","#69901D")
             .style("filter","url(#drop-shadow)");
       }
 
@@ -291,10 +291,10 @@ rects.append("rect")
         d3.select("#chartSvg").selectAll(".rects")
           .transition()
           .duration(500)
-          .attr("fill","#00728F");
+          .attr("fill","#F1B82D");
 
         d3.select("#chartSvg").select(".legend_in")
-          .attr("fill","#00728F")
+          .attr("fill","#F1B82D")
           .style("filter","");
       }
 
@@ -303,9 +303,9 @@ rects.append("rect")
          d3.select("#chartSvg").selectAll(".rects2")
             .transition()
             .duration(500)
-            .attr("fill","#F15D22");
+            .attr("fill","#69901D");
           d3.select("#chartSvg").select(".legend_out")
-            .attr("fill","#F15D22")
+            .attr("fill","#69901D")
             .style("filter","url(#drop-shadow)");
       }
 
@@ -313,9 +313,9 @@ rects.append("rect")
         d3.select("#chartSvg").selectAll(".rects2")
           .transition()
           .duration(500)
-          .attr("fill","#6CB33F");
+          .attr("fill","#000000");
         d3.select("#chartSvg").select(".legend_out")
-          .attr("fill","#6CB33F")
+          .attr("fill","#000000")
           .style("filter","");
       }
 
@@ -323,7 +323,7 @@ rects.append("rect")
     function mouseover(d,i){
 
           d3.select(this)
-            .attr("fill","#F15D22");
+            .attr("fill","#69901D");
             if (this.className.animVal == "rects")
              { 
               $("#"+i).text("Graduate").css("font-size","1em").css("font-weight",400);
@@ -342,7 +342,7 @@ rects.append("rect")
           d3.select(this)
             .transition()
             .duration(500)
-            .attr("fill",function(){if(this.className.animVal == "rects") return "#00728F"; else return "#6CB33F";});
+            .attr("fill",function(){if(this.className.animVal == "rects") return "#F1B82D"; else return "#000000";});
 
 
 
