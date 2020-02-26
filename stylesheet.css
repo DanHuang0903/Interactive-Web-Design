@@ -349,13 +349,13 @@ z-index:100;
   }
 
   .depts{
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: bold;
     color: gray;
   }
 
-  .courses{
-    font-size: 1em;
+  .numbers{
+    font-size: 1.5em;
     font-weight: bold;
     color: gray;
   }

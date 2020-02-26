@@ -7,14 +7,15 @@
 
   	var width = 600, height = 400
   	//the center potion of grouping bubbles.
-  	var center = {x:width/2, y:height/2.2 }
+  	var center = {x:width/2.5, y:height/2.2 }
   		//x potions of each team.
-  	var deptTitleX = {'Education':0, 'Enginnering':200, 'Medical':400};
-  	var courseTitleX = {'Course 1':0, 'Course 2':250, "Course 3": 450, "Course 4":0, "Course 5": 250};
-  	var courseTitleY = {'Course 1':50, 'Course 2':50, "Course 3": 50, "Course 4":250, "Course 5": 250};
+  	var deptTitleX = {'Education':100, 'Enginnering':320, 'Medical':550};
+  	var numberTitleX = {'Less than 450':100, ' Equal or moare than 450':450};
+  //	var courseTitleX = {'Course 1':0, 'Course 2':250, "Course 3": 450, "Course 4":0, "Course 5": 250};
+  //	var courseTitleY = {'Course 1':50, 'Course 2':50, "Course 3": 50, "Course 4":250, "Course 5": 250};
   	var colorScale = ['#F8971D','#FFD24F', '#6CB33F']
   	var colorScale2 = ['#FFD24F', '#6CB33F']
-	var xCenter = [50,250,450]
+	var xCenter = [110,380,600]
 	var numNodes = 15;
 
 	var svg = d3.select("#analytics")
@@ -31,8 +32,6 @@
 			});
 
 
-
-	
 
 
 
@@ -63,7 +62,7 @@
   		var simulation = d3.forceSimulation(nodes);
 			 simulation.force("charge", d3.forceManyBody().strength(25))
 			  .force("x", d3.forceX().x(function(d){
-			  	return d.x + (xCenter[d.category] - d.x) - 20;
+			  	return d.x + (xCenter[d.category] - d.x);
 			  }))
 			  .force("y", d3.forceY().y(function(d){
 			  	return d.y + (height/2-200 - d.y);
@@ -76,23 +75,23 @@
 }
 
 	function showTitle2(){
-		var courseData = d3.keys(courseTitleX);
-		var courses = d3.select("#analytics")
+		var numberData = d3.keys(numberTitleX);
+		var numbers = d3.select("#analytics")
 					  .select('svg')
-					  .selectAll('.courses')
-					  .data(courseData);
-			courses.enter()
+					  .selectAll('.numbers')
+					  .data(numberData);
+			numbers.enter()
 				 .append('text')
-				 .attr('class','courses')
-				 .attr('x', function(d){return courseTitleX[d];})
-				 .attr('y',function(d){return courseTitleY[d];})
+				 .attr('class','numbers')
+				 .attr('x', function(d){return numberTitleX[d];})
+				 .attr('y',50)
 				 .attr('text-anchor', 'start')
 				 .text(function(d){return d;});
 	}
 
 	//Hide the dept labels when call this function
 	function hideTitle2(){
-		d3.select("#analytics").select('svg').selectAll(".courses").remove();
+		d3.select("#analytics").select('svg').selectAll(".numbers").remove();
 	}
 
 		//Group the bubbles in depts when call this function			
@@ -100,13 +99,18 @@
   		showTitle2(); //show the labels
   		hideTitle();
 
+
   		var simulation = d3.forceSimulation(nodes);
 			 simulation.force("charge", d3.forceManyBody().strength(25))
-			  .force("x", d3.forceX().x(function(d,i){
-			  	return d3.values(courseTitleX)[d.course];
+			  .force("x", d3.forceX().x(function(d){
+
+			  	if(d.radius*30 <450)
+			  		return d3.values(numberTitleX)[0] + 50;
+			  	else
+			  		return d3.values(numberTitleX)[1] + 100;
 			  }))
 			  .force("y", d3.forceY().y(function(d){
-			  	return d3.values(courseTitleY)[d.course];
+			  	return d.y + (height/2-200 - d.y);
 			  }))
 			  .force("collision", d3.forceCollide().radius(function(d) {
 			    return d.radius;
@@ -120,8 +124,8 @@
 		hideTitle();
 		hideTitle2()
 		var simulation = d3.forceSimulation(nodes);
-		simulation.force("charge", d3.forceManyBody().strength(50))
-				  .force("center", d3.forceCenter(width/2.5, height/2-200))
+		simulation.force("charge", d3.forceManyBody().strength(100))
+				  .force("center", d3.forceCenter(width/1.5, height/2-200))
 				  .force("collision", d3.forceCollide().radius(function(d){
 								  	return d.radius;
 								  }))
@@ -174,6 +178,7 @@
 			  u.exit().remove()
 }
 
+	
 	function showDetail(d,i){
 	var details =[d3.keys(deptTitleX)[d.category], data[i%3][i%5][0], "Students: "+Math.round(d.radius*30)];
 
@@ -253,28 +258,28 @@
 
 
 
-dismiss();
+go_center();
 $("#btn_overview").click(function(){
 	go_center();
 	$(this).attr("disabled", true);
 	$("#btn_dept").attr("disabled",false);
-	$("#btn_program").attr("disabled",false);
+	$("#btn_number").attr("disabled",false);
 	$("#group").text("Oveview");
 });
 
-$("#btn_program").click(function(){
+$("#btn_number").click(function(){
 	split2();
 	$(this).attr("disabled", true);
 	$("#btn_overview").attr("disabled",false);
-	$("#btn_dept").attr("disabled",true);
-	$("#group").text("By Course");
+	$("#btn_dept").attr("disabled",false);
+	$("#group").text("By enrollment");
 });
 
 $("#btn_dept").click(function(){
 	split();
 	$(this).attr("disabled", true);
 	$("#btn_overview").attr("disabled",false);
-	$("#btn_program").attr("disabled",true);
+	$("#btn_number").attr("disabled",false);
 	$("#group").text("By Department");
 });
 
