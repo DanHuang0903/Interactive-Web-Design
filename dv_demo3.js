@@ -137,7 +137,7 @@
 		hideTitle();
 		var simulation = d3.forceSimulation(nodes);
 			 simulation.force("charge", d3.forceManyBody().strength(-15))
-			 		   .force("center", d3.forceCenter(width/2.5, height/2-200))
+			 		   .force("center", d3.forceCenter(width/1.5, height/2-200))
 			  		   .force("collision", d3.forceCollide().radius(function(d) {
 			    return d.radius;
 			  }))
@@ -258,7 +258,7 @@
 
 
 
-go_center();
+dismiss();
 $("#btn_overview").click(function(){
 	go_center();
 	$(this).attr("disabled", true);
