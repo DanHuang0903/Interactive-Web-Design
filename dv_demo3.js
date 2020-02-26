@@ -273,7 +273,7 @@ $("#btn_number").click(function(){
 	$(this).attr("disabled", true);
 	$("#btn_overview").attr("disabled",false);
 	$("#btn_dept").attr("disabled",false);
-	$("#group").text("By enrollment");
+	$("#group").text("By Enrollment");
 });
 
 $("#btn_dept").click(function(){

@@ -49,11 +49,18 @@ a, a:hover, a:focus {
     margin: 40px 0;
 }
 
-.navlink {
+.nav-link {
     text-decoration: none;
-    color:#dddddd;
+    color:#D4AF37;
 }
 
+.nav-link:active {
+    color: #dddddd;
+}
+
+.nav-link:hover {
+    color: #F1B82D;
+}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
