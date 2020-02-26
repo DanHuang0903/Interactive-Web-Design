@@ -21,7 +21,7 @@
 	var svg = d3.select("#analytics")
 				.append("svg")
 				.attr("id","bubble_svg")
-				.style("width","100%")
+				.style("width",800)
 				.style("height",400);
 
 	//Form the nodes data.
