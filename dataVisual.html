@@ -71,7 +71,7 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download"><i class="fas fa-cloud-download-alt fa-lg"></i>&nbsp;&nbsp;Download source</a>
+                    <a href="https://github.com/DanHuang0903/Interactive-Web-Design/archive/master.zip" class="download"><i class="fas fa-cloud-download-alt fa-lg"></i>&nbsp;&nbsp;Download source</a>
                 </li>
             </ul>
         </nav>
@@ -238,9 +238,16 @@
                               <!-- Card  -->
                              <div class="card-image">
                                    <!-- bottons -->
-                                <button id="btn_overview" class="btn btn-primary" style="margin: 1em; width: 14em;">Overview</button>
-                                <button id="btn_program" class="btn btn-primary" style="margin: 1em; width: 14em;">By Course</button>
-                                <button id="btn_dept" class="btn btn-primary" style="margin: 1em; width: 14em;">By Department</button>
+                                   <div class="row">
+                                      <div class="col-md-5">
+                                         <button id="btn_overview" class="btn blue-gradient" style="margin: 1em; width: 11em;">Overview</button>
+                                      </div>
+                                     <div class="col-md-7">
+                                       <button id="btn_dept" class="btn btn-primary" style="margin: 1em; width: 14em;">By Department</button>
+                                      <button id="btn_program" class="btn btn-primary" style="margin: 1em; width: 14em;">By Course</button>
+                                     </div>
+                                </div>
+                                
                              </div>
                                        <hr/>
                               <!-- Card content -->
@@ -251,6 +258,8 @@
                                 <!-- Text -->
                                 <p class="card-text">
                                     <span class="hover">HOVER</span> the nodes to see details of each course.<br/>
+                                    The size of each bubble illustrates the number of students.
+                                    The color of each bubble illustrates the department.
                                     Have fun!
                                 </p>
                             

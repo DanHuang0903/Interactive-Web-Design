@@ -101,11 +101,7 @@ function start(){
 				btn.id == "btn1"? $("#point1").text("Round " + turn + ": " + point) : $("#point2").text("Round " + turn + ": " + point);
 				btn.id == "btn1"? $("#total1").text(parseInt($("#total1").text()) + point) : $("#total2").text(parseInt($("#total2").text()) + point);
 
-				console.log("point1= " + point);
-				console.log("!!!!!!!!!!!!!!!");
-				console.log("total1= " +$("#total1").text());
-				console.log("!!!!!!!!!!!!!!!");
-				console.log("parse total1 = " + parseInt($("#total1").text()));
+		
 
 				if(flag%2 == 0){
 
@@ -120,7 +116,7 @@ function start(){
 					}
 					else{
 						turn_log['total'] = win=="Player 1"? $("#total1").text() : $("#total2").text();
-						$("#winner").text(win + " Get a Larger Number in Round " + turn);
+						$("#winner").text(win + " Gets a Larger Number in Round " + turn);
 					}
 					log.push(turn_log);
 
