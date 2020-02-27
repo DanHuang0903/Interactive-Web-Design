@@ -107,6 +107,10 @@
                     <a class="nav-link" id="demo2-tab" data-toggle="tab" href="#demo2" role="tab" aria-controls="demo2"
                       aria-selected="false">DEMO2</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="demo3-tab" data-toggle="tab" href="#demo3" role="tab" aria-controls="demo3"
+                      aria-selected="false">DEMO3</a>
+                  </li>
                   
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -333,6 +337,96 @@
                   </div>
                 </div>
 
+                <!-------DEMO3 -------->
+                <div class="tab-pane fade container-fluid" id="demo3" role="tabpanel" aria-labelledby="demo3-tab">
+                  <h5 class="m-3">A Simple DEMO of Advanced Topic</h5>
+                  <div class="row"   id="app">
+                    <div class="col-md-3">
+                            <!-- Card -->
+                            <div class="card">
+
+                              <!-- Card image -->
+                              <div class="m-3"  style="overflow: auto;">
+                                    <!-- Title -->
+                                <h4 class="card-title">NASA API</h4>
+                                      <p class="m-3" style="font-size: 0.9em">The most <span class="hover">IMPORTATN</span> purpose of this DEMO is to illustrate Ajax and API technique. The APOD varies every day, which is synchronized with NASA offical data. However, I didn't store any data (image, text or statistic data) on my local disk or could server. It will update automatically. The technique making this happen is calld Ajax and API. I retrieve data from NASA public API directly using Ajax. Although it is a much more complicated technique and topic, it is used in every website. Its importance is considerable. </p>
+            
+                              </div>
+                               
+
+                              <!-- Card content -->
+                              <div class="card-body">
+
+                                
+
+                             <button class="btn btn-cyan" @click="apod" style="width: 9em;">APOD</button>
+                            <button class="btn btn-cyan" @click="neo" style="width: 9em;">NEO</button>
+                       
+                            
+                        </div>
+                    </div>
+                            <!-- End of Card -->
+                    </div>
+
+                     <div class="col-md-9">
+                            <div class="jumbotron playground">
+                                <div class="container-fluid">
+                                    <div class="row">
+
+                                      <!------APOD------->
+                                      <div class="col-md-12" v-cloak style="overflow: auto;" v-if="APOD">
+                                        <h5>APOD (Astronomy Picture of the Day)</h5>
+                                        <p>{{title}} -- {{date}}</p>
+                                        <img :src="imageUrl" :title="imageTitle" width=90%>
+                                      </div>
+                                      <!--------NEO---------->
+                                      <div class="col-md-12" v-else>
+                                        <h3 class="">NEO (Near-earth Objects)</h3>
+                                  
+                                        <div class="m-3 badge badge-primary" style="font-size: 1.1em">showing {{numAstroids}} items</div>
+             
+                                        <table class="table">
+                                          <thead>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Close Approach Date</th>
+                                            <th scope="col">Estimated Diameter (ft)</th>
+                                            <th scope="col">Remove</th>
+                                          </thead>
+                                          <tbody>
+                                            <tr v-cloak v-for="(a,index) in astroids" :key="a.neo_reference_id">
+                                              <td>{{index + 1}}</td>
+                                              <td>{{a.name}}</td>
+                                              <td>{{getApproachDate(a)}}</td>
+                                              <td>
+                                                <ul v-if="a.close_approach_data.length>0">
+                                                  <li v-for="(value, key) in a.estimated_diameter.feet">
+                                                    {{key}}: {{value}}
+                                                  </li>
+                                                </ul>
+                                              </td>
+                                              <td>
+                                                <button @click="remove(index)" class="btn btn-warning">remove</button>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+
+                                      </div>
+                                     
+                                    </div>
+                                </div>
+                                     
+                            </div>
+                            </div>
+
+
+                  </div>
+                  <!----END OF ROW---->
+                  
+                </div>
+                <!-------END OF DEMO3------->
+
         
                 </div>
               </div>
@@ -346,6 +440,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="external/jquery/jquery.js"></script>
     <script src="jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script_demo3.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {

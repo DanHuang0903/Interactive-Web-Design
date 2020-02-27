@@ -350,9 +350,7 @@ z-index:100;
     color:#CD5C5C;
     font-weight: bold;
   }
-  .card-body{
-    overflow: auto;
-  }
+ 
 
   .depts{
     font-size: 1.5em;
