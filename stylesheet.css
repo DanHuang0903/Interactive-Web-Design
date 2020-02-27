@@ -9,7 +9,7 @@ body {
     background: #fafafa;
 }
 
-table {
+.cvTable {
     width: 85%;
     margin-left: 2em;
 }
