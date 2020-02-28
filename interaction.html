@@ -383,7 +383,10 @@
                                       <div class="col-md-12" v-else>
                                         <h3 class="">NEO (Near-earth Objects)</h3>
                                   
-                                        <div class="m-3 badge" style="font-size: 1.1em;background: #69901D">showing {{numAstroids}} items</div>
+                                        <div v-cloak v-if="numAstroids > 0">
+                                          <p class="m-3 badge rounded" style="font-size: 1.1em;background: #69901D;padding:1em;">showing {{numAstroids}} items</p>
+                                          <p>{{largestObject.name}} has the largest diameter among these NEOs. It's about {{largestObject.diameter}} feet.</p>
+                                        </div>
              
                                         <table class="table table-dark">
                                           <thead>
@@ -394,12 +397,12 @@
                                             <th scope="col">Remove</th>
                                           </thead>
                                           <tbody>
-                                            <tr v-cloak v-for="(a,index) in astroids" :key="a.neo_reference_id">
+                                            <tr v-cloak v-for="(a,index) in astroids">
                                               <td>{{index + 1}}</td>
                                               <td>{{a.name}}</td>
                                               <td>{{getApproachDate(a)}}</td>
                                               <td>
-                                                <ul v-if="a.close_approach_data.length>0">
+                                                <ul>
                                                   <li v-for="(value, key) in a.estimated_diameter.feet">
                                                     {{key}}: {{value}}
                                                   </li>

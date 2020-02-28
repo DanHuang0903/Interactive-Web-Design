@@ -12,7 +12,24 @@
 					computed: {
 						numAstroids: function(){
 						return this.astroids.length;
-					}
+					},
+						largestObject: function(){
+							//get the objects that actually have diameter data
+							var neosHavingData = this.astroids.filter(function(neo){
+								console.log(neo);
+								return neo.estimated_diameter != null;
+							});
+
+							var simpleNeos = neosHavingData.map(function(neo){
+								return {name:neo.name, diameter: Math.round(neo.estimated_diameter.feet.estimated_diameter_max)};
+							});
+
+							var sortedNoes = simpleNeos.sort(function(a,b){
+								return a.diameter-b.diameter;
+							});
+							
+							return sortedNoes[sortedNoes.length-1];
+						}
 					},
 					created: function (){
 						this.fetchAstroids();
