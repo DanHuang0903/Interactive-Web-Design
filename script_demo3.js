@@ -16,7 +16,6 @@
 						largestObject: function(){
 							//get the objects that actually have diameter data
 							var neosHavingData = this.astroids.filter(function(neo){
-								console.log(neo);
 								return neo.estimated_diameter != null;
 							});
 
@@ -41,7 +40,6 @@
 							var url_neo = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=" + apiKey;
 							axios.get(url_apod)
 							 .then(function(response){
-							 	console.log(response);
 							 	vm.imageUrl = response.data.url;
 							 	vm.imageTitle = response.data.title;
 							 	vm.title = response.data.title;
@@ -50,7 +48,6 @@
 
 							 axios.get(url_neo)
 							 .then(function(response2){
-							 	console.log(response2);
 							 	vm.astroids = response2.data.near_earth_objects.slice(0,20);
 							 });
 						},
