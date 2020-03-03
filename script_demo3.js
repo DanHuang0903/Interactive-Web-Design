@@ -6,6 +6,7 @@
 						imageTitle: "",
 						title: "",
 						date: "",
+						type: "",
 						APOD: true,
 						astroids: []
 					},
@@ -44,6 +45,10 @@
 							 	vm.imageTitle = response.data.title;
 							 	vm.title = response.data.title;
 							 	vm.date = response.data.date;
+							 	if(response.data.media_type == 'video')
+							 		vm.type = true;
+							 	else
+							 		vm.type = false;
 							 });
 
 							 axios.get(url_neo)

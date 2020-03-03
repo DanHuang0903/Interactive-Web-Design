@@ -34,8 +34,15 @@
 
      
 </head>
-
-
+<style type="text/css">
+  .tableRow-leave-to, .tableRow-enter{
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  .tableRow-enter-active, .tableRow-leave-active{
+    transition: all .5s ease;
+  }
+</style>
 <body>
 
     <div class="wrapper">
@@ -376,7 +383,8 @@
                                       <div class="col-md-12" v-cloak style="overflow: auto;" v-if="APOD">
                                         <h5>APOD (Astronomy Picture of the Day)</h5>
                                         <p>{{title}} -- <span class="badge badge-info animated bounceInDown" style="font-size: 1em">{{date}}</span></p>
-                                        <iframe :src="imageUrl" :title="imageTitle" width="700" height="350"></iframe>
+                                        <iframe v-if="type" :src="imageUrl" :title="imageTitle" width="700" height="350"></iframe>
+                                       <img v-else :src="imageUrl" :title="imageTitle" width=90%>
                                         
                                       </div>
                                       <!--------NEO---------->
@@ -384,7 +392,7 @@
                                         <h3 class="">NEO (Near-earth Objects)</h3>
                                   
                                         <div v-cloak v-if="numAstroids > 0">
-                                          <p class="m-3 badge rounded" style="font-size: 1.1em;background: #69901D;padding:1em;">showing {{numAstroids}} items</p>
+                                          <p class="mt-3 badge rounded animated fadeInLeft" style="font-size: 1.1em;background: #69901D;padding:1em;">showing {{numAstroids}} items</p>
                                           <p>{{largestObject.name}} has the largest diameter among these NEOs. It's about {{largestObject.diameter}} feet.</p>
                                         </div>
              
@@ -396,8 +404,8 @@
                                             <th>Estimated Diameter (ft)</th>
                                             <th>Remove</th>
                                           </thead>
-                                          <tbody>
-                                            <tr v-cloak v-for="(a,index) in astroids">
+                                          <tbody is="transition-group" name="tableRow" v-cloak>
+                                            <tr v-cloak v-for="(a,index) in astroids" :key="a.neo_reference_id">
                                               <td>{{index + 1}}</td>
                                               <td>{{a.name}}</td>
                                               <td>{{getApproachDate(a)}}</td>
@@ -409,7 +417,7 @@
                                                 </ul>
                                               </td>
                                               <td>
-                                                <button @click="remove(index)" class="btn btn-warning">remove</button>
+                                                <button @click="remove(index)" class="btn btn-warning animated fadeInRight">remove</button>
                                               </td>
                                             </tr>
                                           </tbody>
