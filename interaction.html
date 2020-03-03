@@ -376,8 +376,7 @@
                                       <div class="col-md-12" v-cloak style="overflow: auto;" v-if="APOD">
                                         <h5>APOD (Astronomy Picture of the Day)</h5>
                                         <p>{{title}} -- <span class="badge badge-info animated bounceInDown" style="font-size: 1em">{{date}}</span></p>
-                                        <iframe width="700" height="350" src="https://www.youtube.com/embed/Ilifg26TZrI?rel=0">
-                                        </iframe>
+                                        <iframe :src="imageUrl" :title="imageTitle" width="700" height="350"></iframe>
                                         
                                       </div>
                                       <!--------NEO---------->
