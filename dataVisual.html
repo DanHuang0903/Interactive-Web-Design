@@ -296,15 +296,26 @@
     <script src="dv_demo3.js"></script>
 
     <script type="text/javascript">
+
         $(document).ready(function () {
+
             $('#sidebarCollapse').on('click', function () {
+
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
             chart(data1);
             chart2(data21);
 
-        });
+        });   
+   
+
+$(".dept").text("Education School");
+
+   $(".selection").click(function(e){
+    e.preventDefault();
+    $(".dept").text($(this).text());
+   });
     var data1 = [['course 1',123,321],['course 2',273,143],['course 3',351,233],['course 4',221,309],['course 5',310,298]]; 
    var data2 = [['course 1',109,391],['course 2',103,253],['course 3',151,433],['course 4',121,209],['course 5',110,398]]; 
    var data3 = [['course 1',99,291],['course 2',143,353],['course 3',101,433],['course 4',221,309],['course 5',210,398]]; 
@@ -313,11 +324,8 @@
    var data22 = [['Graduate','course 1',109],['Graduate','course 2',103],['Graduate','course 3',151],['Graduate','course 4',121],['Graduate','course 5',110],['Undergraduate','course 1',391],['Undergraduate','course 2',253],['Undergraduate','course 3',433],['Undergraduate','course 4',209],['Undergraduate','course 5',398]]; 
    var data23 = [['Graduate','course 1',99],['Graduate','course 2',143],['Graduate','course 3',101],['Graduate','course 4',221],['Graduate','course 5',210],['Undergraduate','course 1',291],['Undergraduate','course 2',353],['Undergraduate','course 3',433],['Undergraduate','course 4',309],['Undergraduate','course 5',398]]; 
 
-   $(".dept").text("Education School");
 
-   $(".selection").click(function(){
-    $(".dept").text($(this).text());
-   })
+
 
   </script>
 

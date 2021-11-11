@@ -1,5 +1,8 @@
+
 function chart2(dataset){
+
 	 d3.select("#distribution").selectAll('svg').remove();
+
 	 var width = 700;
  	 var height = 400;
  	 var bar_color ={Graduate:"#F1B82D", Undergraduate:"#000000"};
@@ -119,4 +122,5 @@ function mouseout(d){
 
 
 d3.select(self.frameElement).style("height", "800px");
+
 }
