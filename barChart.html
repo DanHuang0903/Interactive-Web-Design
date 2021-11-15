@@ -43,26 +43,29 @@
                 <li>
                     <a href="index.html"><i class="fas fa-home fa-lg"></i>&nbsp;&nbsp;Home</a>
                 </li>
-                 <li>
-                    <a href="cv.html"><i class="fas fa-file-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;CV</a>
+                <li>
+                    <a href="interaction.html"><i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Interactive Webpage</a>
                 </li>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-line fa-lg"></i>&nbsp;&nbsp;DEMO</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-bar"></i>&nbsp;&nbsp;Chart.js DEMOs</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li class="active">
-                            <a href="#">Chart.js DEMO</a>
+                        <li>
+                            <a href="polarChart.html">Polar Chart</a>
                         </li>
                     
-                        <li>
-                            <a href="dataVisual.html">Data Visualization</a>
+                        <li class="active">
+                            <a href="barChart.html">Bar Chart</a>
                         </li>
 
                         <li>
-                            <a href="interaction.html">Interactive Webpage</a>
+                            <a href="lineChart.html">Line Chart</a>
                         </li>
                     </ul> 
                 </li>
-    
+                
+    			<li>
+                    <a href="dataVisual.html"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;Advanced Data Visulization</a>
+                </li>
                 
                 <li>
                     <a href="mailto:dh4tx@umsystem.edu"><i class="fas fa-envelope fa-lg"></i>&nbsp;&nbsp;Contact</a>
@@ -89,50 +92,33 @@
                </div>
                <hr/>
             
-            <h2>Chart.js DEMO</h2>
+            <h2>Bar Chart DEMO</h2>
             <p>Chart.js intro</p><br/>
-            <ul class="nav nav-tabs  ml-auto" id="myTab3" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="demo1-tab" data-toggle="tab" href="#demo31" role="tab" aria-controls="demo1"
-                      aria-selected="true">DEMO 1</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="demo2-tab" data-toggle="tab" href="#demo32" role="tab" aria-controls="demo2"
-                      aria-selected="false">DEMO2</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="demo3-tab" data-toggle="tab" href="#demo33" role="tab" aria-controls="demo3"
-                      aria-selected="false">DEMO3</a>
-                  </li>
-                  
-              </ul>
-              <div class="tab-content" id="myTabContent">
+            <hr>
 
-                    <!-- DEMO1 Histogram -->
+             <!-- DEMO2 bar Chart -->        
+            <div class="container-fluid">
 
-                  <div class="tab-pane fade show active container-fluid" id="demo21" role="tabpanel" aria-labelledby="demo21-tab">
-                      
-                      <div class="container-fluid">
-                        <div class="row">
-                          <br/>
-                          <h3 class="" style="margin-top: 1em">Course Enrollment <span class="methods">Data</span> - <span class="dept"></span></h3>
-                        </div>
-
-                      <div class="row" style="overflow:auto; height: 25em;">
-                      	<canvas id="myChart1"></canvas>
-                      </div>
-                  </div>
+              <div class="row" style="overflow:auto; height: 25em;" id="mayChartDiv2">
+              	<canvas id="myChart2"></canvas>
               </div>
+             </div>
+
+
+
           </div>
         	
         </div>
       </div>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"></script>
-      <script type="text/javascript" src="chartdemo.js"></script>
+
+      <script type="text/javascript" src="chartdemo2.js"></script>
 
 <script type="text/javascript">
         $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
+
+            $('#sidebarCollapse').on('click', function (e) {
+            	e.preventDefault();
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
