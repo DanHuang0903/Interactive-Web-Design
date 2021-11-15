@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Dan Huang - Chart.js Demo</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="jquery-ui.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.js"></script>
+    
+   
+    
+</head>
+<body>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="animated bounceInLeft page_title">Chart.js DEMO</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="index.html"><i class="fas fa-home fa-lg"></i>&nbsp;&nbsp;Home</a>
+                </li>
+                 <li>
+                    <a href="cv.html"><i class="fas fa-file-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;CV</a>
+                </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-line fa-lg"></i>&nbsp;&nbsp;DEMO</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li class="active">
+                            <a href="#">Chart.js DEMO</a>
+                        </li>
+                    
+                        <li>
+                            <a href="dataVisual.html">Data Visualization</a>
+                        </li>
+
+                        <li>
+                            <a href="interaction.html">Interactive Webpage</a>
+                        </li>
+                    </ul> 
+                </li>
+    
+                
+                <li>
+                    <a href="mailto:dh4tx@umsystem.edu"><i class="fas fa-envelope fa-lg"></i>&nbsp;&nbsp;Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://github.com/DanHuang0903/Interactive-Web-Design/archive/master.zip" class="download"><i class="fas fa-cloud-download-alt fa-lg"></i>&nbsp;&nbsp;Download source</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+        	<div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn hoverable">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+      
+               </div>
+               <hr/>
+            
+            <h2>Chart.js DEMO</h2>
+            <p>Chart.js intro</p><br/>
+            <ul class="nav nav-tabs  ml-auto" id="myTab3" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="demo1-tab" data-toggle="tab" href="#demo31" role="tab" aria-controls="demo1"
+                      aria-selected="true">DEMO 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="demo2-tab" data-toggle="tab" href="#demo32" role="tab" aria-controls="demo2"
+                      aria-selected="false">DEMO2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="demo3-tab" data-toggle="tab" href="#demo33" role="tab" aria-controls="demo3"
+                      aria-selected="false">DEMO3</a>
+                  </li>
+                  
+              </ul>
+              <div class="tab-content" id="myTabContent">
+
+                    <!-- DEMO1 Histogram -->
+
+                  <div class="tab-pane fade show active container-fluid" id="demo21" role="tabpanel" aria-labelledby="demo21-tab">
+                      
+                      <div class="container-fluid">
+                        <div class="row">
+                          <br/>
+                          <h3 class="" style="margin-top: 1em">Course Enrollment <span class="methods">Data</span> - <span class="dept"></span></h3>
+                        </div>
+
+                      <div class="row" style="overflow:auto; height: 25em;">
+                      	<canvas id="myChart1"></canvas>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        	
+        </div>
+      </div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js"></script>
+      <script type="text/javascript" src="chartdemo.js"></script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+
+        });
+
+</script>
+</body>
+</html>
