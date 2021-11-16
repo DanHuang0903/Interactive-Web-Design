@@ -98,6 +98,7 @@ a, a:hover, a:focus {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #444;
+    height: 8em;
 }
 
 #sidebar ul.components {
@@ -181,6 +182,10 @@ a.article, a.article:hover {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+}
+#content img{
+    height: 2.3em;
+    width: 2.3em;
 }
 
 #sidebarCollapse {
