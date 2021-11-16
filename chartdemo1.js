@@ -16,7 +16,17 @@ var myChart1 = new Chart(ctx, {
      },
     options: {
     	plugins: {
-	      title: {
+    		legend: {
+    			position: 'left',
+    			labels: {
+    				boxHeight: 30,
+    				padding: 30,
+    				font: {
+    					size:14
+    				}
+    			}
+    		},
+	        title: {
 	        display: true,
 	        text: 'Course Enrollment Data - Schoole of Education',
 	        font:{
@@ -26,8 +36,6 @@ var myChart1 = new Chart(ctx, {
 	    },
     	scales: {
             r: {
-                suggestedMin: 50,
-                suggestedMax: 600,
                 ticks: {
                 	z: 10,
                 	showLabelBackdrop: false,

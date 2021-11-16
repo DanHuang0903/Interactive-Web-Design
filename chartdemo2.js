@@ -10,19 +10,22 @@ var myChart2 = new Chart(barChart, {
       label: 'School of Education',
       data: [342,516,484,430,308],
       backgroundColor: "#FFB6C1",
+      barPercentage: 0.8,
       stack: 'Stack 0'
     },
     {
       label: 'Enginnering School',
       data: [241,315,359,514,417],
       backgroundColor: "#FFA07A",
+      barPercentage: 0.8,
       stack: 'Stack 0'
     },
     {
       label: 'Medical School',
       data: [291,511,424,401,198],
       backgroundColor: "#008B8B",
-      stack: 'Stack 1'
+      barPercentage: 0.8,
+      stack: 'Stack 0'
     }]
   },
   options: {
