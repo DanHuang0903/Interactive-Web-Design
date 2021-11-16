@@ -17,7 +17,7 @@ var myChart1 = new Chart(ctx, {
     options: {
     	plugins: {
     		legend: {
-    			position: 'left',
+    			position: 'right',
     			labels: {
     				boxHeight: 30,
     				padding: 30,
