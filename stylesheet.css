@@ -183,7 +183,7 @@ a.article, a.article:hover {
     min-height: 100vh;
     transition: all 0.3s;
 }
-#content img{
+#me{
     height: 2.3em;
     width: 2.3em;
 }
