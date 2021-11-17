@@ -177,12 +177,13 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-#content {
+#content, #content_int{
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
 }
+
 #me{
     height: 2.3em;
     width: 2.3em;
@@ -227,6 +228,7 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     INTERACTIVE DEMO
 ----------------------------------------------------- */
+
 #demo1{
     margin-top:2em;
 }
@@ -244,8 +246,12 @@ a.article, a.article:hover {
     margin-left: 1em;
 }
 
-.card{
-    height: 22em;
+#content_int .card{
+    height: 28em;
+}
+
+#content_int .jumbotron {
+    height: 28em;
 }
 
 #dashboard{
@@ -281,7 +287,19 @@ a.article, a.article:hover {
     text-shadow: 3px 3px 4px #333;
 }
 
+#point1, #total1 {
+    color: #FF8C00;
+}
 
+#point2, #total2 {
+    color: #3cba9f;
+}
+
+#count {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #DB7093;
+}
 
 .zoom {      
 -webkit-transition: all 0.35s ease-in-out;    
@@ -368,16 +386,7 @@ z-index:100;
     font-weight: bold;
     color: gray;
   }
-#demo3 {
-    height: 35em;
-}
- #demo3 .card {
-    height: 30em;
- }
 
- #demo3 .jumbotron {
-    height: 30em;
- }
 
 #apod {
     transition:transform 0.25s ease;

@@ -105,7 +105,7 @@
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content">
+        <div id="content_int">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="navbar-btn hoverable">
@@ -150,7 +150,7 @@
 
                               <!-- Card image -->
                               <div class="view overlay">
-                                <img class="card-img-top" src="img/randomnumber.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="img/randomnumber.jpg" alt="Card image cap" height=300>
                                 <div class="mask flex-center rgba-blue-strong">
                                     <div class="intro">
                                         <p class="white-text">Two players take turns getting random numbers.<br/>Whoever gets the larger number in total wins the game.</p>
@@ -209,9 +209,11 @@
                                         </div>
                                         <div class="row justify-content-md-center">
                                             <p>Total Points: <span class="total_num animated" id="total1">0</span></p>
+                                            &nbsp;
+                                            <p id="cal1"></p>
                                         </div>
                                         <div class="row justify-content-md-center">
-                                            <p class="points_num" id="point1">Round 0:</p>
+                                            <p class="points_num">Round <span id="rounds1">0</span> Points : <span id="point1"></span></p>
                                         </div>
                                         <div class="row justify-content-md-center">
                                             <button class="btn" id="btn1" onclick="clicked(this)" style="background:#F1B82D;color:#000">Get Number!</button>
@@ -224,9 +226,11 @@
                                         </div>
                                         <div class="row justify-content-md-center">
                                             <p>Total Points: <span class="total_num animated" id="total2">0</span></p>
+                                            &nbsp;
+                                            <p id="cal2"></p>
                                         </div>
                                         <div class="row justify-content-md-center">
-                                            <p class="points_num" id="point2">Round 0:</p>
+                                            <p class="points_num">Round <span id="rounds2">0</span> Points : <span id="point2"></span></p>
                                         </div>
                                         <div class="row justify-content-md-center">
                                             <button class="btn" id="btn2" onclick="clicked(this)" style="background:#F1B82D;color:#000">Get Number!</button>
@@ -258,7 +262,7 @@
 
                               <!-- Card image -->
                               <div class="view overlay">
-                                <img class="card-img-top" src="img/drag_drop.png" alt="Card image cap">
+                                <img class="card-img-top" src="img/drag_drop.png" alt="Card image cap" height=300>
                                 <div class="mask flex-center rgba-blue-strong">
                                     <div class="intro">
                                         <p class="white-text">Click on icons to see what would happen.<br/>Then drag images to trash bin to see what would happen.</p>
