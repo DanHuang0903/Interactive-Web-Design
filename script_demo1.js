@@ -52,7 +52,7 @@ $(function() {
       $item.fadeOut(function() {
         $item
           .find( "a.ui-icon-refresh" )
-            .remove()
+          .remove()
           .end()
           .css("width","7em")
           .append( trash_icon )
