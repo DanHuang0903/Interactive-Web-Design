@@ -368,7 +368,25 @@ z-index:100;
     font-weight: bold;
     color: gray;
   }
+#demo3 {
+    height: 35em;
+}
+ #demo3 .card {
+    height: 30em;
+ }
 
+ #demo3 .jumbotron {
+    height: 30em;
+ }
+
+#apod {
+    transition:transform 0.25s ease;
+}
+
+#apod:hover {
+    -webkit-transform:scale(1.5); 
+    transform:scale(1.5);
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES

@@ -122,7 +122,6 @@ rects.append("rect")
         .ease(d3.easeBounce)
         .attr("y", function(d){
 
-          console.log(d[1]);
           return yScale(d[1]);
         })
         .attr("fill", "#F1B82D")

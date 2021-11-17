@@ -31,7 +31,7 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
      <script src="script.js"></script>
      <script src="script_demo1.js"></script>
-
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
@@ -118,7 +118,7 @@
             <hr/>
             
             <h2>Interactive Webpage</h2>
-            <p>An interactive web design is a designing paradigm that applies different programming framework and libraries to present user interfaces in a more functional, informative, inspiring, and aesthetic way. Users will get better experience on webpages with interactive web design. As instructional designers, such a designing paradigm will play a important role in offering students and trainers an engaging, interactive, and instructional online learning experience. On this page, I illustrate some interactive web design examples made by different frameworks, among which DEMO3 is an interactive web page that applies real-time data retrieved from NASA.</p>
+            <p style="font-size:0.9em">An interactive web design is a designing paradigm that applies different programming framework and libraries to present user interfaces in a more functional, informative, inspiring, and aesthetic way. Users will get better experience on webpages with interactive web design. As instructional designers, such a designing paradigm will play a important role in offering students and trainers an engaging, interactive, and instructional online learning experience. On this page, I illustrate some interactive web design examples made by different frameworks, among which DEMO3 is an interactive web page that applies real-time data retrieved from NASA.</p>
             <p><span class="hover">HOVER</span> over main images over the DEMO titles to see instructions.</p><br/>
 
             
@@ -366,7 +366,7 @@
                 <div class="tab-pane fade container-fluid" id="demo3" role="tabpanel" aria-labelledby="demo3-tab">
                   <h5 class="m-3">A Simple DEMO of Advanced Topic</h5>
                   <div class="row"   id="app">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                             <!-- Card -->
                             <div class="card">
 
@@ -393,18 +393,21 @@
                             <!-- End of Card -->
                     </div>
 
-                     <div class="col-md-9">
+                     <div class="col-md-8">
                             <div class="jumbotron playground">
                                 <div class="container-fluid">
                                     <div class="row">
 
                                       <!------APOD------->
-                                      <div class="col-md-12" v-cloak style="overflow: auto;" v-if="APOD">
-                                        <h5>APOD (Astronomy Picture of the Day)</h5>
-                                        <p>{{title}} -- <span class="badge badge-info animated bounceInDown" style="font-size: 1em">{{date}}</span></p>
-                                        <iframe v-if="type" :src="imageUrl" :title="imageTitle" width="700" height="350"></iframe>
-                                       <img v-else :src="imageUrl" :title="imageTitle" width=90%>
+                                      <h5>APOD (Astronomy Picture of the Day)</h5>
+                                      
+                                      <div v-cloak style="overflow: auto;" v-if="APOD">
                                         
+                                        <p>{{title}} -- <span class="badge badge-info animated bounceInDown" style="font-size: 1em">{{date}}</span></p>
+                                        <div class="text-center">
+                                            <iframe v-if="type" :src="imageUrl" :title="imageTitle" width=90% height=90%></iframe>
+                                            <img id="apod" v-else :src="imageUrl" :title="imageTitle" width=80% height=80%>
+                                        </div>
                                       </div>
                                       <!--------NEO---------->
                                       <div class="col-md-12" v-else>

@@ -1,10 +1,6 @@
 
-			
-
 $(document).ready(function(){
 			
-
-
 	$("#btn1").prop("disabled",true);
 	$("#btn2").prop("disabled",true);
 
