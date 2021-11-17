@@ -152,7 +152,7 @@ function gameOver(){
 		if(win=="Player 1")
 		 $("#game_over").append('<div class="mask flex-center"><div class="container"><div class="row justify-content-md-center"><div class="col-md-6"><h1 class="animated tada display-3"> WON!!</h1></div><div class="col-md-6"><h1 class="animated hinge display-3"> LOST...</h1></div></div></div></div>');
 		else
-			$("#game_over").append('<div class="mask flex-center"><div class="container"><div class="row justify-content-md-center"><div class="col-md-6"><h1 class="animated hinge display-3"> LOST...</h1></div><div class="col-md-6"><h1 class="animated tada display-3"> WIN!!</h1></div></div></div></div>');
+			$("#game_over").append('<div class="mask flex-center"><div class="container"><div class="row justify-content-md-center"><div class="col-md-6"><h1 class="animated hinge display-3"> LOST...</h1></div><div class="col-md-6"><h1 class="animated tada display-3"> WON!!</h1></div></div></div></div>');
 	}
 	log.forEach(function(i){
 		$("#table").append('<tr><th>' + i['turn'] + '</th> <th>' +i['winner']+ '</th> <th>' + i['total'] + '</th></tr>');
