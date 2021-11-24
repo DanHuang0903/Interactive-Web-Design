@@ -7,14 +7,14 @@ function chart2(dataset){
  	 var height = 400;
  	 var bar_color ={Graduate:"#F1B82D", Undergraduate:"#000000"};
 
-     var svg = d3.select("#distribution")
+   var svg = d3.select("#distribution")
      			   .append("svg")
      			   .attr("width", width)
      			   .attr("height",height)
      			   .attr("id","snake_svg");
 
-     var defs = svg.append("defs");
- 	var filter = defs.append("filter")
+   var defs = svg.append("defs");
+ 	 var filter = defs.append("filter")
     .attr("id", "drop-shadow2")
     .attr("height", "125%");
     filter.append("feGaussianBlur")
